@@ -1,9 +1,10 @@
-import { Profile } from './components/profile'
-import { About } from './components/about'
+import Profile from './components/profile'
+import About from './components/About'
+import './index.css'
 
 function App() {
     return (
-        <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+        <div className="flex flex-col items-center  h-screen bg-neutral-900 text-white">
             <Profile />
             <About />
         </div>
