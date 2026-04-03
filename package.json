@@ -14,7 +14,6 @@
     "@fortawesome/free-brands-svg-icons": "^7.2.0",
     "@fortawesome/free-solid-svg-icons": "^7.2.0",
     "@fortawesome/react-fontawesome": "^3.3.0",
-    "@tailwindcss/vite": "^4.2.1",
     "emailjs-com": "^3.2.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4"
@@ -33,7 +32,20 @@
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.4.0",
     "postcss": "^8.5.8",
-    "tailwindcss": "^4.2.1",
+    "tailwindcss": "^3.4.10",
     "vite": "^8.0.0"
-  }
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/redd1514/my-portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/redd1514/my-portfolio/issues"
+  },
+  "homepage": "https://github.com/redd1514/my-portfolio#readme"
 }

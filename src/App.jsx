@@ -4,9 +4,11 @@ import './index.css'
 
 function App() {
     return (
-        <div className="flex flex-col items-center  h-screen bg-neutral-900 text-white">
+        <div className="flex flex-col items-center h-screen">
             <Profile />
-            <About />
+            <div className="lg:col-span-2 space-y-6">
+                <About />
+            </div>
         </div>
     );
 }
