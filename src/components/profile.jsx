@@ -17,7 +17,7 @@ const [theme, setTheme] = useState('dark');
     }, [theme]);
 
     return (
-        <div className="flex items-center justify-start py-10 mt-5 max-w-4xl gap-6 w-full">
+        <div className="flex items-center justify-start py-5 w-full gap-6">
             <img src={profileImg} alt="Profile" className="w-[150px] h-[150px] mb-4 object-cover" />
             
             <div className="flex flex-col items-start gap-2 w-full max-w-xl">

@@ -4,10 +4,19 @@ import './index.css'
 
 function App() {
     return (
-        <div className="flex flex-col items-center h-screen">
-            <Profile />
-            <div className="lg:col-span-2 space-y-6">
-                <About />
+        <div className="flex flex-col items-center min-h-screen px-4 pt-6">
+
+            <div className="w-full max-w-4xl flex flex-col ">
+                <Profile />
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-2">
+                    <div className="col-span-8">
+                        <About />
+                        
+                    </div>
+
+                </div>
+
+
             </div>
         </div>
     );

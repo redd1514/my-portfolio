@@ -2,9 +2,18 @@
 const About = () => {   
 
     return (
-        <div className="flex flex-col items-center w-1/2 max-w-2xl bg-[#13181b] ">
-            <h1>About Me</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <div className="flex flex-col w-full bg-white dark:bg-[#13181b] p-3 px-5">
+            <h2><b>About</b></h2>
+            <p className="mt-2 pb-4 ">
+                I'm a full-stack software engineer specializing in developing solutions with JavaScript, Python, and PHP. I work on projects including building modern web applications, mobile apps, search engine optimization, digital marketing, and making code tutorials.
+<br />
+<br />
+I've helped startups and MSMEs grow and streamline their processes through software solutions. I've also built a community of over 200,000 developers sharing knowledge and mentorship.
+<br />
+<br />
+Lately, I've been diving deeper into the world of artificial intelligence, focusing on integrating AI tools and techniques into modern applications. My work now includes developing AI-powered solutions, creating intelligent applications, and leveraging generative AI to optimize development workflows and deliver cutting-edge technology.    
+                
+            </p>
         </div>
     )
 
