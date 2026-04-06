@@ -3,6 +3,8 @@ import About from './components/About'
 import './index.css'
 import TechStack from './components/techStack'
 import Recent from './components/recentProject'
+import Experience from './components/experience'
+
 
 function App() {
     return (
@@ -16,7 +18,9 @@ function App() {
                         <TechStack />
                         <Recent />
                     </div>
-
+                    <div className="col-span-4">
+                        <Experience />
+                    </div>
                 </div>
 
 
