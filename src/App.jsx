@@ -2,6 +2,7 @@ import Profile from './components/profile'
 import About from './components/About'
 import './index.css'
 import TechStack from './components/techStack'
+import Recent from './components/recentProject'
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
                     <div className="col-span-8">        
                         <About />
                         <TechStack />
+                        <Recent />
                     </div>
 
                 </div>
