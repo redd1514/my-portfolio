@@ -18,7 +18,16 @@ const TechStack = () => {
                         <span className="px-2 py-0.5 text-sm">Vite</span>
                     </div>
                 </div>
-                
+                <div>
+                    <h3><b>Backend</b></h3>
+                    <div className="flex flex-wrap gap-2 pt-2 ml-2">
+                        <span className="px-2 py-0.5 text-sm">Python</span>
+                        <span className="px-2 py-0.5 text-sm">PostgreSQL</span>
+                        <span className="px-2 py-0.5 text-sm">PHP</span>
+                        <span className="px-2 py-0.5 text-sm">MySQL</span>
+                        <span className="px-2 py-0.5 text-sm">FastAPI</span>
+                    </div>
+                </div>
                 <div>
                     <h3><b>DevOps</b></h3>
                     <div className="flex flex-wrap gap-2 pt-2 ml-2">
