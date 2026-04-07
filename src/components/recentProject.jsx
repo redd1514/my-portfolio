@@ -3,7 +3,10 @@
 const Recent = () => {
     return (
         <div className="flex flex-col w-full bg-white dark:bg-[#0b0d0e] mt-2 p-3 px-5 gap-3">
-           
+            <div className="flex items-center justify-between">
+                <h2><b>Recent Projects</b></h2>
+                <a href="">View all</a>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                 <div className="p-3 space-y-1">
                     <h3 className="text-sm font-semibold ">Heavenly cafe</h3>
