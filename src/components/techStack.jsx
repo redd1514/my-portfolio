@@ -8,7 +8,16 @@ const TechStack = () => {
             </div>
                 
             <div className="space-y-4">
-                
+                <div>
+                    <h3><b>Frontend</b></h3>
+                    <div className="flex flex-wrap gap-2 pt-2 ml-2">
+                        <span className="px-2 py-0.5 text-sm">JavaScript</span>
+                        <span className="px-2 py-0.5 text-sm">TypeScript</span>
+                        <span className="px-2 py-0.5 text-sm">React</span>
+                        <span className="px-2 py-0.5 text-sm">Next.js</span>
+                        <span className="px-2 py-0.5 text-sm">Tailwind CSS</span>
+                    </div>
+                </div>
                 <div>
                     <h3><b>Backend</b></h3>
                     <div className="flex flex-wrap gap-2 pt-2 ml-2">
@@ -20,21 +29,15 @@ const TechStack = () => {
                     </div>
                 </div>
                 <div>
-                    <h3><b>DevOps</b></h3>
+                    <h3><b>DevOps & Tools</b></h3>
                     <div className="flex flex-wrap gap-2 pt-2 ml-2">
                         <span className="px-2 py-0.5 text-sm">Docker</span>
                         <span className="px-2 py-0.5 text-sm">Github Actions</span>
-                    </div>
-                </div>
-                <div>
-                    <h3><b>Developer Tools</b></h3>
-                    <div className="flex flex-wrap gap-1.5 pt-2 ml-2">
                         <span className="px-2 py-0.5 text-sm">Git</span>
                         <span className="px-2 py-0.5 text-sm">Github</span>
-                        <span className="px-2 py-0.5 text-sm">VS Code</span>
-                        <span className="px-2 py-0.5 text-sm">Pycharm</span>
                     </div>
                 </div>
+                
             </div>
         </div>
     );

@@ -8,7 +8,12 @@ export default {
   ],
 
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        border: "bg-gray-300",
+        background: "bg-black",
+      },
+    },
   },
 
   plugins: [],
