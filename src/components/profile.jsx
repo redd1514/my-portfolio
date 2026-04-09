@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import profileImg from '../assets/cj.jpg'
-import React, {useState, useEffect} from 'React'
+import React, {useState, useEffect} from 'react';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 
 const Profile = () => {
