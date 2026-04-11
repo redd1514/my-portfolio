@@ -26,7 +26,12 @@ const [theme, setTheme] = useState('dark');
                 <div className="flex items-center justify-between gap-2 w-full">
                     <h1 className="text-3xl font-bold">Elmer Benitez II</h1>
                     <a>
-                    
+                    <button
+                        className="dark:text-white py-2"
+                        onClick={toggleTheme}
+                        >
+                        {theme === 'light' ?  <FontAwesomeIcon icon={faMoon} /> : <FontAwesomeIcon icon={faSun} />}
+                    </button>
                     </a>
                 </div>
                 
