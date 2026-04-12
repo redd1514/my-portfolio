@@ -22,7 +22,10 @@ const Certificate = () => {
                 <h3 className="text-xs font-semibold">Git & Github</h3>
                 <p className="text-[11px]">Codedex</p>
             </a>
-           
+            <a className="block p-2 dark:bg-black bg-gray-100 dark:hover:bg-gray-950 hover:bg-gray-300 transition-colors duration-200" href="https://drive.google.com/file/d/1s1YG399mEEYskXwcjVHEaAwnYjeC5PDD/view">
+                <h3 className="text-xs font-semibold">Python</h3>
+                <p className="text-[11px]">Codedex</p>
+            </a>
         </div>
 
     </div>
