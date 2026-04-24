@@ -5,7 +5,7 @@ import Recent from './components/recentProject'
 import Experience from './components/experience'
 import Certificate from './components/recentCertification'
 import Profile from './components/profile'
-import Recommendations from './components/Recommendations'
+import InDevelopment from './components/inDevelopment'
 
 function App() {
     return (
@@ -26,7 +26,7 @@ function App() {
                         <Certificate />
                     </div>
                     <div className='col-span-1 md:col-span-3'>
-                        <Recommendations />
+                        <InDevelopment />
                     </div>
                 </div>
             </div>
