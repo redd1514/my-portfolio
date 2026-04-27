@@ -19,7 +19,11 @@ const Recent = () => {
                     <p className="text-xs ">Multiplayer Fighting Game</p>
                       <a href="https://heavenly-cafe.vercel.app/"><p className="text-xs px-2 py-1 font-mono inline-block mt-1 rounded-md bg-gray-100 dark:bg-black">heavenly-cafe.vercel.app</p></a>
                 </div>
-                 
+                 <div className="p-3 space-y-1">
+                    <h3 className="text-sm font-semibold ">Hello world</h3>
+                    <p className="text-xs ">Online Coffee Shop</p>
+                      <a href="https://heavenly-cafe.vercel.app/"><p className="text-xs px-2 py-1 font-mono binline-block mt-1 rounded-md bg-gray-100 dark:bg-black">heavenly-cafe.vercel.app</p></a>
+                </div>
             </div>
 
         </div>
