@@ -36,7 +36,6 @@ const [theme, setTheme] = useState('dark');
                 </div>
                 
                 <h3 className="text-xs md:text-sm mt-0.5 flex items-center gap-1"> <FontAwesomeIcon icon={faLocationDot} /> Valenzuela City</h3>
-                <p className="text-[10px] md:text-base" >Pamantasan Ng Lungsod ng Valenzuela</p>
                 <div className="flex items-center gap-4 mt-2">
                 <a>
                     <button className="bg-black text-white dark:text-black dark:bg-white inline-flex h-7 md:h-8 items-center px-2.5 md:px-4 text-[8px] md:text-xs font-medium text-background hover:-translate-y-0.5 gap-1 md:gap-1.5 whitespace-nowrap min-h-0     ">
