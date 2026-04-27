@@ -15,7 +15,10 @@ const InDevelopment = () => {
                     </li>
                 </ul>
 
-                
+                <div className="mt-5 mb-5 pt-3 border-t border-border">
+                    <p className="text-xs font-semibold font-sans">JRC SportSync</p>
+                    <p className="text-xs font-sans">Capstone Project</p>
+                </div>
             </div>
         </div>
     )
