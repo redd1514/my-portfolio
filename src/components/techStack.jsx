@@ -11,7 +11,7 @@ const TechStack = () => {
                 <div>
                     <h3><b>Frontend</b></h3>
                     <div className="flex flex-wrap gap-2 pt-2 ml-2">
-                        <span className="px-2 py-0.5 text-sm">JavaScript</span>
+                        
                         <span className="px-2 py-0.5 text-sm">TypeScript</span>
                         <span className="px-2 py-0.5 text-sm">React</span>
                         <span className="px-2 py-0.5 text-sm">Next.js</span>
