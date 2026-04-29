@@ -5,7 +5,7 @@ const Recent = () => {
            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                 <div className="p-3 space-y-1">
-                    
+                    <h3 className="text-sm font-semibold ">Heavenly cafe</h3>
                     <p className="text-xs ">Online Coffee Shop</p>
                     <a href="https://heavenly-cafe.vercel.app/"><p className="text-xs px-2 py-1 font-mono inline-block mt-1 rounded-md bg-gray-100 dark:bg-black">heavenly-cafe.vercel.app</p></a>
                 </div>
