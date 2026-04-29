@@ -19,7 +19,9 @@ function App() {
                         <TechStack />
                         <Recent />
                     </div>
-                    
+                    <div className="col-span-2">
+                        <Experience />
+                    </div>
                     <div className="col-span-1 md:col-span-3">
                         <Certificate />
                     </div>
