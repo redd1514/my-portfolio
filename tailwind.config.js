@@ -11,6 +11,7 @@ export default {
       colors: {
         border: "bg-gray-300",
         background: "bg-black",
+
         primary: "bg-gray-900",
       },
     },
