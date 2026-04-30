@@ -25,9 +25,7 @@ function App() {
                     <div className="col-span-1 md:col-span-3">
                         <Certificate />
                     </div>
-                    <div className='col-span-1 md:col-span-3'>
-                        <InDevelopment />
-                    </div>
+                   
                 </div>
             </div>
         </div>
