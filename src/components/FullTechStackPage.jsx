@@ -1,0 +1,63 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const fullStackData = [
+  {
+    category: "Frontend",
+    skills: ["JavaScript", "TypeScript", "React", "Tailwind CSS", "Vite", "Prettier"]
+  },
+  {
+    category: "Backend",
+    skills: ["Node.js", "Express.js", "Python", "PHP",  "FastAPI",  "PostgreSQL", "MySQL", "OAuth", "JWT", "Firebase", "Supabase"]
+  },
+  {
+    category: "DevOps & Tools",
+    skills: ["GitHub Actions","GitLab CI", "Git", "Vercel", "Vite",  "VS Code", "Pycharm", "Discord", "Jira", "Teams", "Github"]
+  },
+  {
+    category: "AI & Machine Learning",
+    skills: ["LangChain", "OpenAI", "Gemini", "Regression Analysis", "Panda"]
+  },
+  {
+    category: "CMS & Security",
+    skills: ["Wordpress", "RSA", "AES", "SHA", "Panda"]
+  },
+  {
+    category: "Programming",
+    skills: ["Java", "C#", "C"]
+  }
+];
+
+function FullTechStackPage() {
+  return (
+    <div className="max-w-4xl mx-auto px-4 py-8 animate-fade-in text-white">
+      <div className="flex items-center gap-4 mb-8 animate-fade-in">
+        <Link to="/" className="text-neutral-400 hover:text-white transition-colors text-sm flex items-center gap-2 ">
+          ← Back to Home
+        </Link>
+        <h1 className="text-3xl font-bold tracking-tight">Tech Stack</h1>
+      </div>
+      
+      <div className="space-y-12">
+        {fullStackData.map((item, idx) => (
+          <div key={idx} className="space-y-4">
+            <h2 className="text-lg font-semibold text-neutral-200">{item.category}</h2>
+            
+            <div className="flex flex-wrap gap-2">
+              {item.skills.map((skill, sIdx) => (
+                <span 
+                  key={sIdx} 
+                  className="px-3 py-1 text-sm  bg-foreground/5 border border-foreground/10"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default FullTechStackPage;
