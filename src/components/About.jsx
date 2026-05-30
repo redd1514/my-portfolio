@@ -4,14 +4,15 @@ const About = () => {
     return (
         <div className="flex flex-col w-full bg-white dark:bg-[#0b0d0e] p-3 px-5">
             <h2><b>About</b></h2>
-            <p className="mt-2 pb-4 ">
-                I'm a full-stack software engineer specializing in developing solutions with JavaScript, Python, and PHP. I work on projects including building modern web applications, mobile apps, search engine optimization, digital marketing, and making code tutorials.
+            <p className="text-sm text-foreground/70 leading-relaxed">
+                I'm a 3rd year Information Technology student in Pamantasan ng Lungsod ng Valenzuela with a passion for full-stack development. I work on projects including 
+                building modern web applications, mobile apps, game development and AI integration to solve real-world problems using modern technologies.
                 <br />
                 <br />
-                I've helped startups and MSMEs grow and streamline their processes through software solutions. I've also built a community of over 200,000 developers sharing knowledge and mentorship.
+                I love building software that connects smooth backend logic with clean, easy-to-use interfaces. My biggest project so far was serving as a Full-Stack Developer for our university department's official website. I helped build the platform from scratch to make it much easier for students and faculty members to find academic resources and navigate the site.
                 <br />
                 <br />
-                Lately, I've been diving deeper into the world of fun intelligence, focusing on integrating AI tools and techniques into modern applications. My work now includes developing AI-powered solutions, creating intelligent applications, and leveraging generative AI to optimize development workflows and deliver cutting-edge technology.    
+                Right now, I'm focusing on making web applications. I'm learning to integrate AI models and frameworks like LangChain and other AI into traditional websites. My goal is to turn simple platforms into smart systems that can handle things like automatic scheduling, smart data search, and helpful, real-time AI assistants.
             </p>
         </div>
     )

@@ -4,14 +4,14 @@ const InDevelopment = () => {
             <h2 className="text-lg font-bold">In Development</h2>
             <div className="">
                 <p className="text-[13px] leading-relaxed font-serif mt-5 ">
-                Currently developing a multi-sport facility scheduling system integrating a conversational AI concierge, and utilizing PostgreSQL for robust database management.
+                Currently developing a multi-sport facility scheduling system integrating a Retrieval-Augmented Generation (RAG) AI, and utilizing PostgreSQL for robust database management.
                 </p>
 
                 <ul className="mt-4 space-y-2 border-l border-gray-700 pl-4">
                     
                     <li className="text-[12px] text-gray-400">
-                        <span className="text-white block font-medium">AI Integration</span>
-                        Natural language processing for user inquiries.
+                        <span className="block font-medium">AI Integration</span>
+                        Retrieval-Augmented Generation for enhanced user interactions.
                     </li>
                 </ul>
 
