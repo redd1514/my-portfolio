@@ -20,7 +20,6 @@ const TechStack = () => {
                         <span className="px-2 py-0.5 text-xs rounded-md bg-foreground/5 shadow-[0_1px_1px_rgba(0,0,0,0.03)]">JavaScript</span>
                         <span className="px-2 py-0.5 text-xs rounded-md bg-foreground/5 shadow-[0_1px_1px_rgba(0,0,0,0.03)]">TypeScript</span>
                         <span className="px-2 py-0.5 text-xs rounded-md bg-foreground/5 shadow-[0_1px_1px_rgba(0,0,0,0.03)]">React</span>
-                        <span className="px-2 py-0.5 text-xs rounded-md bg-foreground/5 shadow-[0_1px_1px_rgba(0,0,0,0.03)]">Next.js</span>
                         <span className="px-2 py-0.5 text-xs rounded-md bg-foreground/5 shadow-[0_1px_1px_rgba(0,0,0,0.03)]">Tailwind CSS</span>
                     </div>
                 </div>
