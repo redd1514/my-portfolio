@@ -43,26 +43,20 @@ const projectsData = [
 
 function AllProjectsPage() {
   return (
-    /* Added bg-white and text-black for light mode, dark: variants for your premium dark layout */
-    <div className="min-h-screen bg-white text-black dark:bg-black dark:text-white max-w-4xl mx-auto px-4 py-8 transition-colors duration-200">
+    <div className="min-h-screen bg-white text-black dark:bg-black dark:text-white max-w-4xl mx-auto px-4 py-8 transition-colors duration-200 animate-fade-in">
       
-      {/* Navigation Header */}
-      <div className="flex items-center gap-4 mb-8 animate-fade-in">
+      <div className="flex items-center gap-4 mb-8">
         <Link to="/" className="text-neutral-600 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors text-sm flex items-center gap-2">
           ← Back to Home
         </Link>
         <h1 className="text-2xl font-bold tracking-tight">All Projects</h1>
       </div>
-
-      {/* Main Responsive Grid Layout */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {projectsData.map((project, idx) => (
           <div 
             key={idx} 
             className={`rounded-sm p-6 flex flex-col justify-between transition-colors duration-200
-              /* Light Mode Base Styles */
               bg-neutral-50 text-neutral-900
-              /* Dark Mode Styles */
               dark:bg-[#0c0c0c] dark:text-white
               ${project.featured 
                 ? 'border border-neutral-400 dark:border-neutral-600 md:col-span-2' 
@@ -70,7 +64,6 @@ function AllProjectsPage() {
               }`}
           >
             <div>
-              {/* Header Title Section with Conditional Featured Tag */}
               <div className="flex justify-between items-start gap-4 mb-2">
                 <h2 className="text-lg font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
                   {project.title}
@@ -82,13 +75,11 @@ function AllProjectsPage() {
                 )}
               </div>
               
-              {/* Description adapts to color themes cleanly */}
               <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-6 leading-relaxed">
                 {project.description}
               </p>
             </div>
             
-            {/* Inline Link Block Badge */}
             <div className="flex">
               <a 
                 href={project.linkUrl}
