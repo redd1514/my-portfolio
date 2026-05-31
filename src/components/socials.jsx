@@ -1,7 +1,7 @@
 const Socials = () => {
 
     return (
-        <div className="p-4 space-y-2  bg-white dark:bg-[#0b0d0e] grid grid-cols-1 md:grid-cols-4 gap-4">   
+        <div className="p-4 space-y-2  bg-white dark:bg-[#0b0d0e] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">   
             <div className="flex flex-col justify-between space-y-1.5">
                 <p className="text-xs font-medium mb-2">A member of</p>
                 <div className="space-y-1 flex flex-col h-full">
@@ -66,7 +66,7 @@ const Socials = () => {
                 <p className="text-xs text-foreground/70 font-medium mb-2">Speaking</p>
                 <div className="group p-3 rounded-lg bg-foreground/5 shadow-[0_1px_2px_rgba(0,0,0,0.03),0_1px_1px_rgba(0,0,0,0.04)] hover:bg-foreground/10 hover:shadow-[0_3px_10px_rgba(0,0,0,0.06)] transition-all duration-200 flex flex-col justify-between h-full">
                     <p className="text-[10px] text-foreground/70 mb-2 leading-tight">Open to collaborating on full-stack web applications, IoT projects, or technical research. Let's build something impactful together.</p>
-                    <a className="text-[10px] font-medium text-accent hover:underline inline-flex items-center gap-1 group/link" href="https://www.linkedin.com/in/elmer-benitez-867a46381/">Get in touch
+                    <a className="text-[10px] font-medium text-accent hover:underline inline-flex items-center gap-1 group/link" href="mailto:benitez1504email.com">Get in touch
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" >
                             <path stroke-linecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 5l7 7-7 7"
                             ></path>
@@ -77,7 +77,7 @@ const Socials = () => {
 
             <div className="space-y-1">
 
-                <a className="group p-1.5 rounded-md bg-foreground/5 shadow-[0_1px_2px_rgba(0,0,0,0.03),0_1px_1px_rgba(0,0,0,0.04)] hover:bg-foreground/10 hover:shadow-[0_3px_10px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-0.5 block" href="">
+                <a className="group p-1.5 rounded-md bg-foreground/5 shadow-[0_1px_2px_rgba(0,0,0,0.03),0_1px_1px_rgba(0,0,0,0.04)] hover:bg-foreground/10 hover:shadow-[0_3px_10px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-0.5 block" >
                     <div className="flex items-center gap-1 mb-0.5">
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" >
                             <path stroke-linecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
@@ -88,7 +88,7 @@ const Socials = () => {
                     <p className="text-[9px] font-medium text-foreground group-hover:text-accent transition-colors">Benitez1504elmer@gmail.com</p>
                 </a>
 
-                <a target="_blank" className="group p-1.5 rounded-md bg-foreground/5 shadow-[0_1px_2px_rgba(0,0,0,0.03),0_1px_1px_rgba(0,0,0,0.04)] hover:bg-foreground/10 hover:shadow-[0_3px_10px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-0.5 block" href="">
+                <a target="_none" className="group p-1.5 rounded-md bg-foreground/5 shadow-[0_1px_2px_rgba(0,0,0,0.03),0_1px_1px_rgba(0,0,0,0.04)] hover:bg-foreground/10 hover:shadow-[0_3px_10px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-0.5 block">
                     <div className="flex items-center gap-1 mb-0.5">
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" >
                             <path stroke-linecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
@@ -99,7 +99,7 @@ const Socials = () => {
                     <p className="text-[9px] font-medium text-foreground group-hover:text-accent transition-colors">Open to Internships</p>
                 </a>
 
-                <a target="_blank" className="group p-1.5 rounded-md bg-foreground/5 shadow-[0_1px_2px_rgba(0,0,0,0.03),0_1px_1px_rgba(0,0,0,0.04)] hover:bg-foreground/10 hover:shadow-[0_3px_10px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-0.5 block" href="">
+                <a target="_blank" className="group p-1.5 rounded-md bg-foreground/5 shadow-[0_1px_2px_rgba(0,0,0,0.03),0_1px_1px_rgba(0,0,0,0.04)] hover:bg-foreground/10 hover:shadow-[0_3px_10px_rgba(0,0,0,0.06)] transition-all duration-200 hover:-translate-y-0.5 block" >
                     <div className="flex items-center gap-1 mb-0.5">
                         <svg className="w-3 h-3 md:w-3.5 md:h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" >
                             <path stroke-linecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
