@@ -79,10 +79,10 @@ function Chatbot() {
   }
 };
   return (
-    <div className="fixed bottom-6 right-6 z-50 font-sans text-sm flex flex-col items-end animate-fade-in">
+    <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 font-sans text-sm flex flex-col items-end animate-fade-in">
       {/* 1. Expandable Floating Window Panel */}
       <div 
-        className={`absolute bottom-[calc(100%+1rem)] right-0 w-80 md:w-96 h-[450px] rounded-2xl border flex flex-col shadow-2xl transition-all duration-300 origin-bottom-right
+        className={`absolute bottom-[calc(100%+0.5rem)] md:bottom-[calc(100%+1rem)] right-0 w-[calc(100vw-2rem)] sm:w-80 md:w-96 h-[400px] md:h-[450px] rounded-2xl border flex flex-col shadow-2xl transition-all duration-300 origin-bottom-right
         bg-white border-neutral-200 text-black dark:bg-[#0c0c0c] dark:border-neutral-800 dark:text-white
         ${isOpen ? 'scale-100 opacity-100 visible' : 'scale-95 opacity-0 invisible pointer-events-none'}`}
       >
@@ -157,9 +157,9 @@ function Chatbot() {
       {/* 2. Floating Action Launcher Button (Always stays here) */}
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-5 py-3.5 bg-white text-black border border-neutral-300 shadow-xl hover:border-neutral-400 dark:bg-white dark:text-black dark:border-transparent transition-all rounded-sm font-semibold tracking-tight z-10"
+        className="flex items-center gap-2 px-5 py-3.5 bg-white text-black border border-neutral-300 shadow-xl hover:border-neutral-400 dark:bg-white dark:text-black dark:border-transparent transition-all rounded-sm font-semibold tracking-tight z-10 group"
       >
-        <svg className="w-5 h-5 text-black" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <svg className="w-5 h-5 text-black animate-float" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
         </svg>
         <span>Chat with Elmer</span>
