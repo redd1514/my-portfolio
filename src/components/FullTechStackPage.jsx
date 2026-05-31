@@ -30,9 +30,9 @@ const fullStackData = [
 
 function FullTechStackPage() {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 animate-fade-in text-white">
+    <div className="max-w-4xl mx-auto px-4 py-8 animate-fade-in text-black dark:text-white">
       <div className="flex items-center gap-4 mb-8 animate-fade-in">
-        <Link to="/" className="text-neutral-400 hover:text-white transition-colors text-sm flex items-center gap-2 ">
+        <Link to="/" className="text-neutral-600 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors text-sm flex items-center gap-2 ">
           ← Back to Home
         </Link>
         <h1 className="text-3xl font-bold tracking-tight">Tech Stack</h1>
@@ -41,7 +41,7 @@ function FullTechStackPage() {
       <div className="space-y-12">
         {fullStackData.map((item, idx) => (
           <div key={idx} className="space-y-4">
-            <h2 className="text-lg font-semibold text-neutral-200">{item.category}</h2>
+            <h2 className="text-lg font-semibold text-neutral-800 dark:text-neutral-200">{item.category}</h2>
             
             <div className="flex flex-wrap gap-2">
               {item.skills.map((skill, sIdx) => (
