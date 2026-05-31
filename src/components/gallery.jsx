@@ -15,7 +15,19 @@ const Gallery = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [selectedImageIndex, setSelectedImageIndex] = useState(null);
     const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
-    const itemsToShow = 5;
+    const [itemsToShow, setItemsToShow] = useState(5);
+
+    useEffect(() => {
+        const updateItemsToShow = () => {
+            if (window.innerWidth < 640) setItemsToShow(2);
+            else if (window.innerWidth < 768) setItemsToShow(3);
+            else if (window.innerWidth < 1024) setItemsToShow(4);
+            else setItemsToShow(5);
+        };
+        updateItemsToShow();
+        window.addEventListener('resize', updateItemsToShow);
+        return () => window.removeEventListener('resize', updateItemsToShow);
+    }, []);
 
     const nextSlide = () => {
         if (currentIndex < images.length - itemsToShow) {
@@ -60,17 +72,17 @@ const Gallery = () => {
         <div className="bento-card p-4 col-span-1 md:col-span-6 space-y-2 group animate-fade-in animation-delay-600  bg-white dark:bg-[#0b0d0e]">
             <h2 className="text-lg font-bold">Gallery</h2>
             <div className="relative">
-                <div className="relative overflow-hidden">
+                <div className="relative overflow-hidden w-full">
                     <div 
-                        className="flex gap-2 transition-transform duration-500 ease-in-out" 
-                        style={{ transform: `translateX(calc(-${currentIndex} * (20% + 0.1rem)))` }}
+                        className="flex gap-2 transition-transform duration-500 ease-in-out w-full" 
+                        style={{ transform: `translateX(calc(-${currentIndex} * ((100% + 8px) / ${itemsToShow})))` }}
                     > 
                         {images.map((img, index) => (
                             <div 
                                 key={index}
                                 onClick={() => setSelectedImageIndex(index)}
                                 className="relative flex-shrink-0 bg-transparent overflow-hidden transition-all duration-200 group/image cursor-pointer aspect-square hover:opacity-80"
-                                style={{ width: "calc(20% - 0.4rem)" }}
+                                style={{ width: `calc((100% - ${8 * (itemsToShow - 1)}px) / ${itemsToShow})` }}
                             >
                                 <img src={img} alt={`Gallery ${index + 1}`} className="w-full h-full object-cover" />
                             </div>
