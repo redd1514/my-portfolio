@@ -18,12 +18,12 @@ const [theme, setTheme] = useState('dark');
     }, [theme]);
 
     return (
-        <div className="flex items-center justify-start py-5 w-full gap-6">
-            <img src={profileImg} alt="Profile" className="w-[160px] h-[160px] mb-4 object-cover" />
+        <div className="flex flex-row items-start justify-start py-5 w-full gap-4 md:gap-6">
+            <img src={profileImg} alt="Profile" className="w-[140px] h-[153px] sm:w-[155px] sm:h-[155px] md:w-[160px] md:h-[160px] object-cover flex-shrink-0" />
             
-            <div className="flex flex-col items-start gap-2 w-full max-w-2xl">
-                <div className="flex items-center justify-between gap-2 w-full">
-                    <h1 className=" text-lg md:text-2xl font-bold truncate">Elmer Benitez II</h1>
+            <div className="flex flex-col items-start gap-1 md:gap-2 w-full max-w-2xl text-left">
+                <div className="flex items-start justify-between gap-2 w-full">
+                    <h1 className="text-lg sm:text-xl md:text-2xl font-bold truncate">Elmer Benitez II</h1>
                     <a>
                     <button
                         className="dark:text-white py-2"
@@ -44,10 +44,10 @@ const [theme, setTheme] = useState('dark');
                     <span>Valenzuela City, Philippines</span>
                 </p>
         
-                <p className="text-[10px] md:text-base" >Pamantasan Ng Lungsod ng Valenzuela</p>
-                <div className="flex items-center gap-4 mt-2">
-                <a>
-                    <button className="bg-black text-white dark:text-black dark:bg-white inline-flex h-7 md:h-8 items-center px-2.5 md:px-4 text-[8px] md:text-xs font-medium transition-all duration-200 hover:bg-gray-800 dark:hover:bg-gray-200 hover:-translate-y-0.5 gap-1 md:gap-1.5 whitespace-nowrap min-h-0">
+                <p className="text-[10px] md:text-base font-medium" >Pamantasan Ng Lungsod ng Valenzuela</p>
+                <div className="flex flex-col md:flex-row items-start md:items-center justify-start gap-2 md:gap-4 mt-2 w-full">
+                <a href="mailto:benitez1504email.com" className="w-full md:w-auto">
+                    <button className="bg-black text-white dark:text-black dark:bg-white flex md:inline-flex justify-center w-full md:w-auto h-7 md:h-8 items-center px-2.5 md:px-4 text-[10px] md:text-xs font-medium transition-all duration-200 hover:bg-gray-800 dark:hover:bg-gray-200 hover:-translate-y-0.5 gap-1 md:gap-1.5 whitespace-nowrap min-h-0">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" >
                             <path stroke-linecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                             ></path>
@@ -59,12 +59,14 @@ const [theme, setTheme] = useState('dark');
                         </svg>
                     </button>
                 </a>
-                <a href='https://github.com/redd1514'>
-                    <button className="dark:text-white md:inline-flex h7 md:h-8 items-center shadow-[0_1px_2px_rgba(0,0,0,0.03),0_1px_1px_rgba(0,0,0,0.04)] bg-background px-2.5 md:px-4 text-[8px] md:text-xs font-medium transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:-translate-y-0.5 gap-1 md:gap-1.5 whitespace-nowrap min-h-0"> <FontAwesomeIcon icon={faGithub} /> Github</button>
-                </a>
-                <a href='https://www.linkedin.com/in/elmer-benitez-867a46381/'>
-                    <button className="dark:text-white md:inline-flex h7 md:h-8 items-center shadow-[0_1px_2px_rgba(0,0,0,0.03),0_1px_1px_rgba(0,0,0,0.04)] bg-background px-2.5 md:px-4 text-[8px] md:text-xs font-medium transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:-translate-y-0.5 gap-1 md:gap-1.5 whitespace-nowrap min-h-0"> <FontAwesomeIcon icon={faLinkedin} /> Linkdin</button>
-                </a>
+                <div className="flex flex-row gap-2 md:gap-4 w-full md:w-auto">
+                    <a href='https://github.com/redd1514' className="flex-1 md:flex-none">
+                        <button className="dark:text-white flex w-full justify-center md:inline-flex h-7 md:h-8 items-center shadow-[0_1px_2px_rgba(0,0,0,0.03),0_1px_1px_rgba(0,0,0,0.04)] bg-background px-2.5 md:px-4 text-[10px] md:text-xs font-medium transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:-translate-y-0.5 gap-1 md:gap-1.5 whitespace-nowrap min-h-0"> <FontAwesomeIcon icon={faGithub} /> Github</button>
+                    </a>
+                    <a href='https://www.linkedin.com/in/elmer-benitez-867a46381/' className="flex-1 md:flex-none">
+                        <button className="dark:text-white flex w-full justify-center md:inline-flex h-7 md:h-8 items-center shadow-[0_1px_2px_rgba(0,0,0,0.03),0_1px_1px_rgba(0,0,0,0.04)] bg-background px-2.5 md:px-4 text-[10px] md:text-xs font-medium transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:-translate-y-0.5 gap-1 md:gap-1.5 whitespace-nowrap min-h-0"> <FontAwesomeIcon icon={faLinkedin} /> LinkedIn</button>
+                    </a>
+                </div>
             </div>
             </div>
             
