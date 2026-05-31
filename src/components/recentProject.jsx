@@ -6,12 +6,11 @@ const Recent = () => {
         <div className=" bg-white dark:bg-[#0b0d0e] bento-card p-4 col-span-1 md:col-span-4 space-y-2 group animate-fade-in animation-delay-300">           
             <div className="flex items-center justify-between">
                 <h2 className="text-lg font-bold">Recent Projects</h2>
-                <Link to="/projects" className="text-sm  hover:text-gray-400 transition-colors">
-                <a className="text-xs text-foreground/70 hover:text-foreground flex items-center gap-1 transition-colors" href=""> View all
+                <Link to="/projects" className="text-xs text-foreground/70 hover:text-foreground flex items-center gap-1 transition-colors">
+                    View all
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strong-linecap="round" strong-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7"></path>
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 5l7 7-7 7"></path>
                     </svg>
-                </a>  
                 </Link>
             </div>
             
