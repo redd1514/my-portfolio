@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { BOT_CONTEXT } from '../data/botContext';
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import profileImg from '../assets/cj.jpg';
+import profileImg from '../assets/dark_mode_profile.jpg';
 
 function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
