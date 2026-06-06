@@ -36,13 +36,14 @@ const [theme, setTheme] = useState('dark');
             <div className="flex flex-col items-start gap-1 md:gap-2 w-full max-w-2xl text-left">
                 <div className="flex items-start justify-between gap-2 w-full">
                     <h1 className="text-lg sm:text-xl md:text-2xl font-bold truncate">Elmer Benitez II</h1>
+                    <a>
                     <button
-                        className="dark:text-white py-2 px-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-foreground/50 transition-shadow"
+                        className="dark:text-white py-2"
                         onClick={toggleTheme}
-                        aria-label={theme === 'light' ? "Switch to dark mode" : "Switch to light mode"}
-                    >
+                        >
                         {theme === 'light' ?  <FontAwesomeIcon icon={faMoon} /> : <FontAwesomeIcon icon={faSun} />}
                     </button>
+                    </a>
                 </div>
                 
                 <p className="text-xs md:text-sm text-foreground/70 mt-0.5 flex items-center gap-1">
@@ -57,8 +58,8 @@ const [theme, setTheme] = useState('dark');
         
                 <p className="text-[10px] md:text-base font-medium" >Pamantasan Ng Lungsod ng Valenzuela</p>
                 <div className="flex flex-col md:flex-row items-start md:items-center justify-start gap-2 md:gap-4 mt-2 w-full">
-                <a href="mailto:Benitez1504elmer@gmail.com" className="w-full md:w-auto rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-black focus-visible:ring-foreground/50 transition-shadow">
-                    <button tabIndex="-1" className="bg-black text-white dark:text-black dark:bg-white flex md:inline-flex justify-center w-full md:w-auto h-7 md:h-8 items-center px-2.5 md:px-4 text-[10px] md:text-xs font-medium transition-all duration-200 hover:bg-gray-800 dark:hover:bg-gray-200 hover:-translate-y-0.5 active:scale-95 gap-1 md:gap-1.5 whitespace-nowrap min-h-0 rounded-md">
+                <a href="mailto:Benitez1504elmer@gmail.com" className="w-full md:w-auto">
+                    <button className="bg-black text-white dark:text-black dark:bg-white flex md:inline-flex justify-center w-full md:w-auto h-7 md:h-8 items-center px-2.5 md:px-4 text-[10px] md:text-xs font-medium transition-all duration-200 hover:bg-gray-800 dark:hover:bg-gray-200 hover:-translate-y-0.5 gap-1 md:gap-1.5 whitespace-nowrap min-h-0">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" >
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                             ></path>
@@ -71,11 +72,11 @@ const [theme, setTheme] = useState('dark');
                     </button>
                 </a>
                 <div className="flex flex-row gap-2 md:gap-4 w-full md:w-auto">
-                    <a href='https://github.com/redd1514' className="flex-1 md:flex-none rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-black focus-visible:ring-foreground/50 transition-shadow">
-                        <button tabIndex="-1" className="dark:text-white flex w-full justify-center md:inline-flex h-7 md:h-8 items-center shadow-[0_1px_2px_rgba(0,0,0,0.03),0_1px_1px_rgba(0,0,0,0.04)] rounded-sm bg-background px-2.5 md:px-4 text-[10px] md:text-xs font-medium transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:-translate-y-0.5 active:scale-95 gap-1 md:gap-1.5 whitespace-nowrap min-h-0"> <FontAwesomeIcon icon={faGithub} /> Github</button>
+                    <a href='https://github.com/redd1514' className="flex-1 md:flex-none">
+                        <button className="dark:text-white flex w-full justify-center md:inline-flex h-7 md:h-8 items-center shadow-[0_1px_2px_rgba(0,0,0,0.03),0_1px_1px_rgba(0,0,0,0.04)] bg-background px-2.5 md:px-4 text-[10px] md:text-xs font-medium transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:-translate-y-0.5 gap-1 md:gap-1.5 whitespace-nowrap min-h-0"> <FontAwesomeIcon icon={faGithub} /> Github</button>
                     </a>
-                    <a href='https://www.linkedin.com/in/elmer-benitez-867a46381/' className="flex-1 md:flex-none rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-black focus-visible:ring-foreground/50 transition-shadow">
-                        <button tabIndex="-1" className="dark:text-white flex w-full justify-center md:inline-flex h-7 md:h-8 items-center shadow-[0_1px_2px_rgba(0,0,0,0.03),0_1px_1px_rgba(0,0,0,0.04)] rounded-sm bg-background px-2.5 md:px-4 text-[10px] md:text-xs font-medium transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:-translate-y-0.5 active:scale-95 gap-1 md:gap-1.5 whitespace-nowrap min-h-0"> <FontAwesomeIcon icon={faLinkedin} /> LinkedIn</button>
+                    <a href='https://www.linkedin.com/in/elmer-benitez-867a46381/' className="flex-1 md:flex-none">
+                        <button className="dark:text-white flex w-full justify-center md:inline-flex h-7 md:h-8 items-center shadow-[0_1px_2px_rgba(0,0,0,0.03),0_1px_1px_rgba(0,0,0,0.04)] bg-background px-2.5 md:px-4 text-[10px] md:text-xs font-medium transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:-translate-y-0.5 gap-1 md:gap-1.5 whitespace-nowrap min-h-0"> <FontAwesomeIcon icon={faLinkedin} /> LinkedIn</button>
                     </a>
                 </div>
             </div>
