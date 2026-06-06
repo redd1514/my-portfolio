@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const fullStackData = [
   {
     category: "Frontend",
-    skills: ["JavaScript", "TypeScript", "React", "Tailwind CSS", "Vite", "Prettier"]
+    skills: ["JavaScript", "TypeScript", "React", "Tailwind CSS", "Vite"]
   },
   {
     category: "Backend",
@@ -16,11 +16,11 @@ const fullStackData = [
   },
   {
     category: "AI & Machine Learning",
-    skills: ["LangChain", "OpenAI", "Gemini", "Regression Analysis", "Panda"]
+    skills: ["LangChain", "OpenAI API", "Gemini API", "Regression Analysis", "Panda"]
   },
   {
     category: "CMS & Security",
-    skills: ["Wordpress", "RSA", "AES", "SHA", "Panda"]
+    skills: ["Wordpress", "RSA"]
   },
   {
     category: "Programming",

@@ -11,7 +11,7 @@ const projectsData = [
   },
   {
     title: "JRC SPORTSYNC",
-    description: "A multi-sport Integrative mapping scheduling and management system with a Retrieval-Augmented Generation AI System.",
+    description: "A multi-sport Integrative mapping management system with a Retrieval-Augmented Generation AI System.",
     linkText: "sportsync-tan.vercel.app/", 
     linkUrl: "https://sportsync-tan.vercel.app/" 
   },
@@ -39,7 +39,15 @@ const projectsData = [
     linkText: "the-great-debate",
     linkUrl: "https://drive.google.com/file/d/18z3XGogqGOABZA20oTrj6tCK-Y-FJuv6/view?usp=sharing"
   },
+  {
+    title: "Cyndikato Expansion App",
+    description: "A multiplayer mobile strategy game built with Unity, featuring real-time player status and notification updates.",
+    linkText: "the-great-debate",
+    linkUrl: "https://www.youtube.com/watch?v=ZZvU0mZ5RXE"
+  }
 ];
+  
+            
 
 function AllProjectsPage() {
   return (
@@ -90,6 +98,7 @@ function AllProjectsPage() {
                 {project.linkText}
               </a>
             </div>
+
           </div>
         ))}
       </div>
