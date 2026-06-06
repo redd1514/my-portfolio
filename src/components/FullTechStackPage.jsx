@@ -12,7 +12,7 @@ const fullStackData = [
   },
   {
     category: "DevOps & Tools",
-    skills: ["GitHub Actions","GitLab CI", "Git", "Vercel", "Vite",  "VS Code", "Pycharm", "Discord", "Jira", "Teams", "Github"]
+    skills: ["GitHub Actions","Docker", "Git", "Vercel", "Vite",  "VS Code", "Pycharm", "Discord", "Jira", "Teams", "Github"]
   },
   {
     category: "AI & Machine Learning",
