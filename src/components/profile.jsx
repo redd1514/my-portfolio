@@ -53,7 +53,7 @@ const [theme, setTheme] = useState('dark');
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                         ></path>
                     </svg>
-                    <span>Valenzuela City, </span>
+                    <span>Valenzuela City, Philippines</span>
                 </p>
         
                 <p className="text-[10px] md:text-base font-medium" >Pamantasan Ng Lungsod ng Valenzuela</p>
