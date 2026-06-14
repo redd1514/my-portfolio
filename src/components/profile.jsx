@@ -56,7 +56,7 @@ const [theme, setTheme] = useState('dark');
                     <span>Valenzuela City, Philippines</span>
                 </p>
         
-                <p className="text-[10px] md:text-base font-medium" >Paantasan Ng Lungsod ng Valenzuela</p>
+                <p className="text-[10px] md:text-base font-medium" >Pamantasan Ng Lungsod ng Valenzuela</p>
                 <div className="flex flex-col md:flex-row items-start md:items-center justify-start gap-2 md:gap-4 mt-2 w-full">
                 <a href="mailto:Benitez1504elmer@gmail.com" className="w-full md:w-auto">
                     <button className="bg-black text-white dark:text-black dark:bg-white flex md:inline-flex justify-center w-full md:w-auto h-7 md:h-8 items-center px-2.5 md:px-4 text-[10px] md:text-xs font-medium transition-all duration-200 hover:bg-gray-800 dark:hover:bg-gray-200 hover:-translate-y-0.5 gap-1 md:gap-1.5 whitespace-nowrap min-h-0">
