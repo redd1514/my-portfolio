@@ -14,7 +14,7 @@ import img10 from '../assets/img10.jpg';
 const Gallery = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [selectedImageIndex, setSelectedImageIndex] = useState(null);
-    const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
+    const images = [img1, img2, img3, img4, img5, img6, img7, img9, img10];
     const [itemsToShow, setItemsToShow] = useState(5);
 
     useEffect(() => {
