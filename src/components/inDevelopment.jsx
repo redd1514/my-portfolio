@@ -11,7 +11,7 @@ const InDevelopment = () => {
                     
                     <li className="text-[12px] text-gray-400">
                         <span className="block font-medium">AI Integration</span>
-                        Retrieval- Generation for enhanced user interactions.
+                        Retrieval-Augmented Generation for enhanced user interactions.
                     </li>
                 </ul>
 
