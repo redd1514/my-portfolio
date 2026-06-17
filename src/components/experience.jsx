@@ -11,7 +11,7 @@ const Experience = () => {
                     <div className="space-y-1">
                         <h3 className="text-sm font-semibold">BS Information Technology</h3>
                         <div className="flex items-center justify-between">
-                            <span className="text-xs">Pamantasan ng Lungsod ng </span>
+                            <span className="text-xs">Pamantasan ng Lungsod ng Valenzuela</span>
                             <span className="text-[10px] font-mono px-1.5 py-0.5">2022</span>
                         </div>
                     </div>
