@@ -23,7 +23,7 @@ const Experience = () => {
                         <h3 className="text-sm font-semibold">Mobile App and Web Development</h3>
                         <div className="flex items-center justify-between">
                             <span className="text-xs">STI Meycauayan</span>
-                            <span className="text-[10px] font-mono px-1.5 py-0.5">2020</span>
+                            <span className="text-[10px] font-mono px-1.5 py-0.5"></span>
                         </div>
                     </div>
                 </div>
