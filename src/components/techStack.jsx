@@ -24,7 +24,7 @@ const TechStack = () => {
                     </div>
                 </div>
                 <div>
-                    <h3 className="text-sm font-semibold mb-2">Backend</h3>
+                    <h3 className="text-sm font-semibold mb-2"></h3>
                     <div className="flex flex-wrap gap-2 pt-2 ml-2">
                         <span className="px-2 py-0.5 text-xs rounded-md bg-foreground/5 shadow-[0_1px_1px_rgba(0,0,0,0.03)]">Python</span>
                         <span className="px-2 py-0.5 text-xs rounded-md bg-foreground/5 shadow-[0_1px_1px_rgba(0,0,0,0.03)]">PostgreSQL</span>
