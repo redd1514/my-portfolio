@@ -64,7 +64,7 @@ const Socials = () => {
             </div>
             
             <div className="flex flex-col justify-between space-y-1.5">
-                <p className="text-xs text-foreground/70 font-medium mb-2"></p>
+                <p className="text-xs text-foreground/70 font-medium mb-2">Speaking</p>
                 <div className="group p-3 rounded-lg bg-foreground/5 shadow-[0_1px_2px_rgba(0,0,0,0.03),0_1px_1px_rgba(0,0,0,0.04)] hover:bg-foreground/10 hover:shadow-[0_3px_10px_rgba(0,0,0,0.06)] transition-all duration-200 flex flex-col justify-between h-full">
                     <p className="text-[10px] text-foreground/70 mb-2 leading-tight">Open to collaborating on full-stack web applications, IoT projects, or technical research. Let's build something impactful together.</p>
                     <a className="text-[10px] font-medium text-accent hover:underline inline-flex items-center gap-1 group/link" href="mailto:Benitez1504elmer@gmail.com">Get in touch
