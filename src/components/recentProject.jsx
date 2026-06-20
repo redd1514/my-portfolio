@@ -16,7 +16,7 @@ const Recent = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                 <div className="bento-card p-3 space-y-1">
-                    <h3 className="text-sm font-semibold group-hover:text-accent">JRC </h3>
+                    <h3 className="text-sm font-semibold group-hover:text-accent">JRC SportSync</h3>
                     <p className="text-xs ">Integrative mapping solution for sports facility management</p>
                     <a href="https://sportsync-tan.vercel.app/"><p className="text-xs px-2 py-1 font-mono inline-block mt-1 rounded-md bg-gray-100 dark:bg-black">sportsync-tan.vercel.app/</p></a>
                 </div>
