@@ -16,7 +16,7 @@ const fullStackData = [
   },
   {
     category: "AI & Machine Learning",
-    skills: ["LangChain", "OpenAI API", "Gemini API", "Regression "]
+    skills: ["LangChain", "OpenAI API", "Gemini API", "Regression Analysis"]
   },
   {
     category: "CMS & Security",
