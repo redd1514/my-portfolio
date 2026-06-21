@@ -6,7 +6,7 @@ import profileImg from '../assets/dark_mode_profile.jpg';
 function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { role: 'assistant', text: "Hi! I'm Elmer. Ask me  about my projects, technical stack, or background!" }
+    { role: 'assistant', text: "Hi! I'm Elmer. Ask me anything about my projects, technical stack, or background!" }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
