@@ -11,7 +11,7 @@ const projectsData = [
   },
   {
     title: "JRC SPORTSYNC",
-    description: "A multi-sport Integrative mapping management system with a Retrieval-Augmented Generation AI System.",
+    description: "A multi-sport Integrative  management system with a Retrieval-Augmented Generation AI System.",
     linkText: "sportsync-tan.vercel.app/", 
     linkUrl: "https://sportsync-tan.vercel.app/" 
   },
