@@ -8,7 +8,7 @@ const fullStackData = [
   },
   {
     category: "Backend",
-    skills: ["Node.js", "Express.js", "Python", "",  "FastAPI",  "PostgreSQL", "MySQL", "OAuth", "JWT", "Firebase", "Supabase"]
+    skills: ["Node.js", "Express.js", "Python", "PHP",  "FastAPI",  "PostgreSQL", "MySQL", "OAuth", "JWT", "Firebase", "Supabase"]
   },
   {
     category: "DevOps & Tools",
