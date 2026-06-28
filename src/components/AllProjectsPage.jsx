@@ -17,7 +17,7 @@ const projectsData = [
   },
   {
     title: "Valenzuela Survey System",
-    description: "A web-based citizen feedback system designed to give residents a direct voice to the municipality.",
+    description: "A web-based citizen feedback system designed to  residents a direct voice to the municipality.",
     linkText: "valenzuela-survey.vercel.app/",
     linkUrl: "https://valenzuela-survey.vercel.app/"
   },
