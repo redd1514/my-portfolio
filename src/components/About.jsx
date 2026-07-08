@@ -6,7 +6,7 @@ const About = () => {
             <h2><b>About</b></h2>
             <p className="text-sm text-foreground/70 leading-relaxed">
                 I'm a 3rd year Information Technology student in Pamantasan ng Lungsod ng Valenzuela with a passion for full-stack development. I work on projects including 
-                building modern web applications, mobile apps, game development and AI integration to solve real-world problems using modern technologies.
+                building modern web applications,  apps, game development and AI integration to solve real-world problems using modern technologies.
                 <br />
                 <br />
                 I love building software that connects smooth backend logic with clean, easy-to-use interfaces. My biggest project so far was serving as a Full-Stack Developer for our university department's official website. I helped build the platform from scratch to make it much easier for students and faculty members to find academic resources and navigate the site.
