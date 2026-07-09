@@ -23,7 +23,7 @@ const projectsData = [
   },
   {
     title: "Heavenly Cafe",
-    description: "A full-stack responsive web application for local cafe order management digital presence.",
+    description: "A full-stack responsive web application for local cafe order management and digital presence.",
     linkText: "heavenly-cafe.vercel.app/",
     linkUrl: "https://heavenly-cafe.vercel.app/"
   },
