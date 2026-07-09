@@ -29,7 +29,7 @@ const projectsData = [
   },
   {
     title: "University Room Reservation",
-    description: "A seamless academic space-booking system built using React, Tailwind CSS, and Firebase.",
+    description: "A seamless academic space-booking system built using React, Tailwind , and Firebase.",
     linkText: "room-reserve.vercel.app",
     linkUrl: "https://digital-classroom-reservation-for-plv.vercel.app/#tab=login"
   },
