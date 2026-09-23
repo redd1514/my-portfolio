@@ -93,7 +93,7 @@ function toContents(messages) {
 
 function getProviderError(status) {
   if (status === 401 || status === 403) {
-    return "The chat service is not configured correctly.";
+    return "Gemini rejected the server API key. Create a new key and redeploy.";
   }
 
   if (status === 429) {
