@@ -4,20 +4,20 @@ const InDevelopment = () => {
             <h2 className="text-lg font-bold">In Development</h2>
             <div className="">
                 <p className="text-[13px] leading-relaxed font-serif mt-5 ">
-                Currently developing a multi-sport facility scheduling system integrating a Retrieval-Augmented Generation (RAG) AI, and utilizing PostgreSQL for robust database management.
+                Currently developing a Camp-Navi system with AI integration for enhanced navigation and geofencing capabilities. This project aims to provide a seamless and intelligent navigation experience within the camp premises.
                 </p>
 
                 <ul className="mt-4 space-y-2 border-l border-gray-700 pl-4">
                     
                     <li className="text-[12px] text-gray-400">
-                        <span className="block font-medium">AI Integration</span>
-                        Retrieval-Augmented Generation for enhanced user interactions.
+                        <span className="block font-medium">Integrative mapping</span>
+                        provides accurate mapping and navigation within the camp premises.
                     </li>
                 </ul>
 
                 <div className="mt-5 mb-5 pt-3 border-t border-border">
-                    <p className="text-xs font-semibold font-sans">JRC SportSync</p>
-                    <p className="text-xs font-sans">Capstone Project</p>
+                    <p className="text-xs font-semibold font-sans">Camp-Navi</p>
+                    <p className="text-xs font-sans">Internship Project</p>
                 </div>
             </div>
         </div>

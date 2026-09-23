@@ -4,15 +4,23 @@ import { Link } from 'react-router-dom';
 const fullStackData = [
   {
     category: "Frontend",
-    skills: ["JavaScript", "TypeScript", "React", "Tailwind CSS", "Vite"]
+    skills: ["HTML", "CSS", "Bootstrap", "JavaScript", "TypeScript", "React", "Tailwind CSS"]
   },
   {
     category: "Backend",
-    skills: ["Node.js", "Express.js", "Python", "PHP",  "FastAPI",  "PostgreSQL", "MySQL", "OAuth", "JWT", "Firebase", "Supabase"]
+    skills: ["Node.js", "Express.js", "Hono.js", "Python", "PHP",  "FastAPI",  "Django", "OAuth", "JWT", "Firebase", "Supabase"]
+  },
+  {
+    category: "Database",
+    skills: ["MySQL", "PostgreSQL", "MSSQL", "SQLite"]
+  },
+  {
+    category: "Game Development",
+    skills: ["Unity", "C#", "3ds Max", "Blender"]
   },
   {
     category: "DevOps & Tools",
-    skills: ["GitHub Actions","Docker", "Git", "Github", "Vercel", "Vite",  "VS Code", "Pycharm", "Discord", "Jira", "Teams"]
+    skills: ["GitHub Actions","Docker", "Git", "Github", "Vercel", "Vite",  "VS Code", "Visual Studio", "Pycharm", "Discord", "Jira", "Teams", "Illustrator", "Photoshop", "Figma"]
   },
   {
     category: "AI & Machine Learning",

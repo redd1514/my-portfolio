@@ -1,13 +1,18 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { BOT_CONTEXT } from '../data/botContext';
-import { GoogleGenerativeAI } from "@google/generative-ai";
 import profileImg from '../assets/dark_mode_profile.jpg';
+
+const INITIAL_MESSAGE = {
+  role: 'assistant',
+  text: "Hi! I'm Elmer. Ask me anything about my projects, technical stack, or background!",
+  isGreeting: true,
+};
+const MAX_VISIBLE_MESSAGES = 40;
+const MAX_REQUEST_MESSAGES = 20;
+const REQUEST_TIMEOUT_MS = 30_000;
 
 function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState([
-    { role: 'assistant', text: "Hi! I'm Elmer. Ask me anything about my projects, technical stack, or background!" }
-  ]);
+  const [messages, setMessages] = useState([INITIAL_MESSAGE]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const chatEndRef = useRef(null);
@@ -18,66 +23,60 @@ function Chatbot() {
     }
   }, [messages, isOpen]);
 
+  const appendMessage = (message) => {
+    setMessages((prev) => {
+      const conversation = [...prev.filter((item) => !item.isGreeting), message]
+        .slice(-MAX_VISIBLE_MESSAGES);
+      return [INITIAL_MESSAGE, ...conversation];
+    });
+  };
+
   const handleSendMessage = async (e) => {
-  e.preventDefault();
-  if (!input.trim() || isLoading) return;
+    e.preventDefault();
+    if (!input.trim() || isLoading) return;
 
-  const userMessage = input.trim();
-  setInput('');
-  
-  // 1. Instantly display user's message in chat layout
-  setMessages((prev) => [...prev, { role: 'user', text: userMessage }]);
-  setIsLoading(true);
+    const userMessage = input.trim();
+    const conversation = [
+      ...messages.filter((message) => !message.isGreeting && !message.isError),
+      { role: 'user', text: userMessage },
+    ].slice(-MAX_REQUEST_MESSAGES);
 
-  try {
-  const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
-  if (!apiKey) {
-    throw new Error("API Key is missing or undefined.");
-  }
+    setInput('');
+    appendMessage({ role: 'user', text: userMessage });
+    setIsLoading(true);
 
-  // 1. Initialize the official SDK wrapper
-  const genAI = new GoogleGenerativeAI(apiKey);
-  
-  // 2. Set the model target and provide system instructions
-  const model = genAI.getGenerativeModel({ 
-    model: "gemini-2.5-flash",
-    systemInstruction: `You are Elmer. Speak exactly as though you are Elmer Benitez II himself talking about your own work. Use this context to answer: ${JSON.stringify(BOT_CONTEXT)}`
-  });
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
 
-  // 3. Format the chat history (skip the greeting so it starts correctly)
-  const historyWithoutGreeting = messages.filter((msg, index) => index !== 0);
-  const formattedHistory = historyWithoutGreeting.map(msg => ({
-    role: msg.role === 'assistant' ? 'model' : 'user',
-    parts: [{ text: msg.text }]
-  }));
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: conversation }),
+        signal: controller.signal,
+      });
+      const data = await response.json().catch(() => ({}));
 
-  // 4. Send the chat history PLUS the newest user message directly to Gemini
-  const result = await model.generateContent({
-    contents: [
-      ...formattedHistory,
-      { role: 'user', parts: [{ text: userMessage }] }
-    ]
-  });
+      if (!response.ok) {
+        throw new Error(data.error || `Chat request failed (${response.status}).`);
+      }
 
-  // 5. Parse out the generated textual response stream safely
-  const response = await result.response;
-  let botReply = response.text() || "I'm having trouble pulling up that detail right now.";
-  
-  // Remove markdown asterisks from the response
-  botReply = botReply.replace(/\*/g, '');
-  
-  setMessages((prev) => [...prev, { role: 'assistant', text: botReply }]);
+      if (typeof data.text !== 'string' || !data.text.trim()) {
+        throw new Error('The chat service returned an empty response.');
+      }
 
-} catch (error) {
-  console.error("Detailed Chat Error:", error);
-  setMessages((prev) => [
-    ...prev, 
-    { role: 'assistant', text: "Sorry, I lost connection to server grid. Let's try that question again." }
-  ]);
-} finally {
-    setIsLoading(false);
-  }
-};
+      appendMessage({ role: 'assistant', text: data.text.trim() });
+    } catch (error) {
+      console.error('Chat request failed:', error);
+      const errorText = error.name === 'AbortError'
+        ? 'The request timed out. Please try again.'
+        : error.message || 'The chat service is temporarily unavailable.';
+      appendMessage({ role: 'assistant', text: errorText, isError: true });
+    } finally {
+      clearTimeout(timeoutId);
+      setIsLoading(false);
+    }
+  };
   return (
     <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 font-sans text-sm flex flex-col items-end animate-fade-in">
       {/* 1. Expandable Floating Window Panel */}
@@ -139,14 +138,15 @@ function Chatbot() {
 
         {/* Input Form Footer */}
         <form onSubmit={handleSendMessage} className="p-3 border-t border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black rounded-b-2xl flex gap-2">
-          <input 
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Ask me about my tech stack or projects..."
-            className="flex-1 bg-neutral-100 dark:bg-[#121212] border-transparent rounded-full px-4 py-2.5 focus:outline-none focus:ring-1 focus:ring-neutral-300 dark:focus:ring-neutral-700 transition-all text-[13px] font-medium placeholder:text-neutral-400"
-          />
-          <button type="submit" className="bg-neutral-900 text-white dark:bg-white dark:text-black p-2 w-[42px] h-[42px] shrink-0 flex items-center justify-center rounded-sm transition-opacity hover:opacity-90">
+             <input
+               type="text"
+               value={input}
+               onChange={(e) => setInput(e.target.value)}
+               maxLength={2000}
+               placeholder="Ask me about my tech stack or projects..."
+               className="flex-1 bg-neutral-100 dark:bg-[#121212] border-transparent rounded-full px-4 py-2.5 focus:outline-none focus:ring-1 focus:ring-neutral-300 dark:focus:ring-neutral-700 transition-all text-[13px] font-medium placeholder:text-neutral-400"
+             />
+           <button type="submit" disabled={isLoading || !input.trim()} className="bg-neutral-900 text-white dark:bg-white dark:text-black p-2 w-[42px] h-[42px] shrink-0 flex items-center justify-center rounded-sm transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed">
             <svg className="w-4 h-4 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 12h14M12 5l7 7-7 7" />
             </svg>

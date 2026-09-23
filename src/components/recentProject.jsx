@@ -33,8 +33,8 @@ const Recent = () => {
                 </div>
                  <div className="bento-card p-3 space-y-1">
                     <h3 className="text-sm font-semibold group-hover:text-accent">Pais 2.0</h3>
-                    <p className="text-xs ">Online Coffee Shop</p>
-                      <a href="https://heavenly-cafe.vercel.app/"><p className="text-xs px-2 py-1 font-mono inline-block mt-1 rounded-md bg-gray-100 dark:bg-black">heavenly-cafe.vercel.app</p></a>
+                    <p className="text-xs ">PNP-ITMS Intern Tracking System.</p>
+                      <a href="https://itms-armd-directory-two.vercel.app/"><p className="text-xs px-2 py-1 font-mono inline-block mt-1 rounded-md bg-gray-100 dark:bg-black">itms-armd-directory-two.vercel.app/</p></a>
                 </div>
                  
             </div>

@@ -12,37 +12,31 @@ const projectsData = [
   {
     title: "JRC SPORTSYNC",
     description: "A multi-sport Integrative mapping management system with a Retrieval-Augmented Generation AI System.",
-    linkText: "sportsync-tan.vercel.app/", 
+    linkText: "sportsync-tan.vercel.app/ (2025)", 
     linkUrl: "https://sportsync-tan.vercel.app/" 
-  },
-  {
-    title: "Valenzuela Survey System",
-    description: "A web-based citizen feedback system designed to give residents a direct voice to the municipality.",
-    linkText: "valenzuela-survey.vercel.app/",
-    linkUrl: "https://valenzuela-survey.vercel.app/"
   },
   {
     title: "Heavenly Cafe",
     description: "A full-stack responsive web application for local cafe order management and digital presence.",
-    linkText: "heavenly-cafe.vercel.app/",
+    linkText: "heavenly-cafe.vercel.app/ (2025)",
     linkUrl: "https://heavenly-cafe.vercel.app/"
   },
   {
     title: "University Room Reservation",
     description: "A seamless academic space-booking system built using React, Tailwind CSS, and Firebase.",
-    linkText: "room-reserve.vercel.app",
+    linkText: "room-reserve.vercel.app (2025)",
     linkUrl: "https://digital-classroom-reservation-for-plv.vercel.app/#tab=login"
   },
   {
     title: "The Great Debate",
     description: "A multiplayer console game built with Unity, featuring real-time combat and dynamic arenas.",
-    linkText: "the-great-debate",
+    linkText: "the-great-debate (2025)",
     linkUrl: "https://drive.google.com/file/d/18z3XGogqGOABZA20oTrj6tCK-Y-FJuv6/view?usp=sharing"
   },
   {
     title: "Cyndikato Expansion App",
     description: "A multiplayer mobile strategy game built with Unity, featuring real-time player status and notification updates.",
-    linkText: "the-great-debate",
+    linkText: "the-great-debate (2025)",
     linkUrl: "https://www.youtube.com/watch?v=ZZvU0mZ5RXE"
   }
 ];
@@ -50,27 +44,27 @@ const projectsData = [
 const internData = [
 {
     title: "PNP Assignment System",
-    description: "Survey system for the Philippine National Police, designed to streamline data collection and preferred location for deciding movement and assignment of uniformed personnel.",
-    linkText: "pnp-survey.up.railway.app/",
+    description: "Survey system for the Philippine National Police, designed to streamline 340+ data collection and preferred location for deciding movement and assignment of uniformed personnel.",
+    linkText: "pnp-survey.up.railway.app/ (2026)",
     linkUrl: "https://pnp-survey.up.railway.app/",
     featured: true 
   },
   {
     title: "Camp-Navi",
     description: "A geofencing and navigation system for Camp Crame, designed to enhance security and operational efficiency.",
-    linkText: "sportsync-tan.vercel.app/", 
+    linkText: "sportsync-tan.vercel.app/ (2026)", 
     linkUrl: "https://pnp-survey.up.railway.app/" 
   },
   {
     title: "P-IDTMS",
     description: "PNP-Internship Database Tracking Management System.Internship Daily Time Record Management System. Comprehensive web application for tracking attendance, managing intern evaluations, and automating DTR workflows.",
-    linkText: "pnp-itms-internship-attendance.vercel.app/",
+    linkText: "pnp-itms-internship-attendance.vercel.app/ (2026)",
     linkUrl: "https://pnp-itms-internship-attendance.vercel.app/"
   },
   {
     title: "PAIS 2.0",
-    description: "PNP-ITMS Personnel and Assignment Information System. Full-scale enterprise HR and personnel management platform for uniformed and civilian personnel. (2026)",
-    linkText: "itms-armd-directory-two.vercel.app/",
+    description: "Personnel and Assignment Information System. Full-scale enterprise HR and personnel management platform for uniformed and civilian personnel. (2026)",
+    linkText: "itms-armd-directory-two.vercel.app/ (2026)",
     linkUrl: "https://itms-armd-directory-two.vercel.app/"
   }
   
