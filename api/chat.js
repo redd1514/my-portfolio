@@ -1,6 +1,6 @@
 import { BOT_CONTEXT } from "../src/data/botContext.js";
 
-const MODEL = "gemini-2.5-flash";
+const MODEL = "gemini-3.6-flash";
 const MAX_MESSAGES = 20;
 const MAX_MESSAGE_LENGTH = 2000;
 const MAX_REQUESTS_PER_WINDOW = 10;
@@ -98,6 +98,10 @@ function getProviderError(status) {
 
   if (status === 429) {
     return "The chat service is busy. Please try again shortly.";
+  }
+
+  if (status === 404) {
+    return "The configured Gemini model is unavailable. Deploy the latest chatbot code.";
   }
 
   return "The chat service is temporarily unavailable.";
