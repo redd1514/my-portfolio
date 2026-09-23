@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 const projectsData = [
 {
     title: "PLV CEIT Official Website",
-    description: "The official website at Pamantasan ng Lungsod ng Valenzuela, showcasing academic programs, faculty, and student resources.",
-    linkText: "plvceit.org/",
+    description: "The official website of CEIT in Pamantasan ng Lungsod ng Valenzuela, showcasing academic programs, faculty, and student resources.",
+    linkText: "plvceit.org/ (2025)",
     linkUrl: "https://plvceit.org/",
     featured: true 
   },
@@ -47,7 +47,34 @@ const projectsData = [
   }
 ];
   
-            
+const internData = [
+{
+    title: "PNP Assignment System",
+    description: "Survey system for the Philippine National Police, designed to streamline data collection and preferred location for deciding movement and assignment of uniformed personnel.",
+    linkText: "pnp-survey.up.railway.app/",
+    linkUrl: "https://pnp-survey.up.railway.app/",
+    featured: true 
+  },
+  {
+    title: "Camp-Navi",
+    description: "A geofencing and navigation system for Camp Crame, designed to enhance security and operational efficiency.",
+    linkText: "sportsync-tan.vercel.app/", 
+    linkUrl: "https://pnp-survey.up.railway.app/" 
+  },
+  {
+    title: "P-IDTMS",
+    description: "PNP-Internship Database Tracking Management System.Internship Daily Time Record Management System. Comprehensive web application for tracking attendance, managing intern evaluations, and automating DTR workflows.",
+    linkText: "pnp-itms-internship-attendance.vercel.app/",
+    linkUrl: "https://pnp-itms-internship-attendance.vercel.app/"
+  },
+  {
+    title: "PAIS 2.0",
+    description: "PNP-ITMS Personnel and Assignment Information System. Full-scale enterprise HR and personnel management platform for uniformed and civilian personnel. (2026)",
+    linkText: "itms-armd-directory-two.vercel.app/",
+    linkUrl: "https://itms-armd-directory-two.vercel.app/"
+  }
+  
+];            
 
 function AllProjectsPage() {
   return (
@@ -61,6 +88,51 @@ function AllProjectsPage() {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {projectsData.map((project, idx) => (
+          <div 
+            key={idx} 
+            className={`rounded-sm p-6 flex flex-col justify-between transition-colors duration-200
+              bg-neutral-50 text-neutral-900
+              dark:bg-[#0c0c0c] dark:text-white
+              ${project.featured 
+                ? 'border border-neutral-400 dark:border-neutral-600 md:col-span-2' 
+                : 'border border-neutral-200 hover:border-neutral-400 dark:border-neutral-900 dark:hover:border-neutral-700'
+              }`}
+          >
+            <div>
+              <div className="flex justify-between items-start gap-4 mb-2">
+                <h2 className="text-lg font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
+                  {project.title}
+                </h2>
+                {project.featured && (
+                  <span className="text-[10px] font-mono tracking-widest text-neutral-500 border border-neutral-300 bg-neutral-100 dark:text-neutral-400 dark:border-neutral-800 dark:bg-[#121212] px-2 py-0.5 uppercase rounded-sm shrink-0">
+                    Featured
+                  </span>
+                )}
+              </div>
+              
+              <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-6 leading-relaxed">
+                {project.description}
+              </p>
+            </div>
+            
+            <div className="flex">
+              <a 
+                href={project.linkUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-block bg-neutral-100 border border-neutral-300 text-neutral-700 hover:border-neutral-500 dark:bg-[#121212] dark:border-neutral-800 dark:text-neutral-300 dark:hover:border-neutral-500 text-xs font-mono px-2.5 py-1 transition-colors rounded-sm"
+              >
+                {project.linkText}
+              </a>
+            </div>
+
+          </div>
+        ))}
+      </div>
+
+      <h2 className="text-2xl font-bold tracking-tight mt-12 mb-4">Internship Projects</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {internData.map((project, idx) => (
           <div 
             key={idx} 
             className={`rounded-sm p-6 flex flex-col justify-between transition-colors duration-200

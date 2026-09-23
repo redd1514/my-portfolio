@@ -15,23 +15,24 @@ const Recent = () => {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                <div className="bento-card p-3 space-y-1">
-                    <h3 className="text-sm font-semibold group-hover:text-accent">JRC SportSync</h3>
-                    <p className="text-xs ">Integrative mapping solution for sports facility management</p>
-                    <a href="https://sportsync-tan.vercel.app/"><p className="text-xs px-2 py-1 font-mono inline-block mt-1 rounded-md bg-gray-100 dark:bg-black">sportsync-tan.vercel.app/</p></a>
-                </div>
+                
                  <div className="bento-card p-3 space-y-1">
                     <h3 className="text-sm font-semibold group-hover:text-accent">PLV CEIT</h3>
                     <p className="text-xs ">Official Website of PLV CEIT Department</p>
                       <a href="https://plvceit.org/"><p className="text-xs px-2 py-1 font-mono inline-block mt-1 rounded-md bg-gray-100 dark:bg-black">plvceit.org/</p></a>
                 </div>
+                <div className="bento-card p-3 space-y-1">
+                    <h3 className="text-sm font-semibold group-hover:text-accent">PNP Assignment System</h3>
+                    <p className="text-xs ">Assignment and location movement system for PNP personnel</p>
+                    <a href="https://pnp-survey.up.railway.app/"><p className="text-xs px-2 py-1 font-mono inline-block mt-1 rounded-md bg-gray-100 dark:bg-black">pnp-survey.up.railway.app/</p></a>
+                </div>
                  <div className="bento-card p-3 space-y-1">
-                    <h3 className="text-sm font-semibold group-hover:text-accent">Valenzuela Surveying System</h3>
-                    <p className="text-xs ">Online Survey System</p>
+                    <h3 className="text-sm font-semibold group-hover:text-accent">Camp-navi</h3>
+                    <p className="text-xs ">Integrative mapping and navigation with geofencing system for Camp Crame</p>
                       <a href="https://valenzuela-survey.vercel.app/"><p className="text-xs px-2 py-1 font-mono inline-block mt-1 rounded-md bg-gray-100 dark:bg-black">valenzuela-survey.vercel.app/</p></a>
                 </div>
                  <div className="bento-card p-3 space-y-1">
-                    <h3 className="text-sm font-semibold group-hover:text-accent">Heavenly Cafe</h3>
+                    <h3 className="text-sm font-semibold group-hover:text-accent">Pais 2.0</h3>
                     <p className="text-xs ">Online Coffee Shop</p>
                       <a href="https://heavenly-cafe.vercel.app/"><p className="text-xs px-2 py-1 font-mono inline-block mt-1 rounded-md bg-gray-100 dark:bg-black">heavenly-cafe.vercel.app</p></a>
                 </div>
