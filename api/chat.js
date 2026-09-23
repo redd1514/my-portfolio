@@ -91,9 +91,18 @@ function toContents(messages) {
   return contents;
 }
 
-function getProviderError(status) {
+function getProviderError(status, providerData) {
   if (status === 401 || status === 403) {
     return "Gemini rejected the server API key. Create a new key and redeploy.";
+  }
+
+  if (status === 400) {
+    const providerMessage = providerData?.error?.message?.toLowerCase() || "";
+    if (providerMessage.includes("api key")) {
+      return "Gemini rejected the API key format. Check that the Vercel value has no quotes or extra spaces.";
+    }
+
+    return "Gemini rejected the request. Deploy the latest chatbot code and verify the API configuration.";
   }
 
   if (status === 429) {
@@ -118,7 +127,7 @@ export default async function handler(req, res) {
     return sendJson(res, 429, { error: "Too many requests. Please try again shortly." });
   }
 
-  const apiKey = process.env.GEMINI_API_KEY?.trim();
+  const apiKey = process.env.GEMINI_API_KEY?.trim().replace(/^['"]|['"]$/g, "");
   if (!apiKey) {
     console.error("GEMINI_API_KEY is not configured.");
     return sendJson(res, 500, { error: "The chat service is not configured." });
@@ -175,7 +184,7 @@ export default async function handler(req, res) {
       message: providerData?.error?.message,
     });
     return sendJson(res, providerResponse.status === 429 ? 429 : 502, {
-      error: getProviderError(providerResponse.status),
+      error: getProviderError(providerResponse.status, providerData),
     });
   }
 
