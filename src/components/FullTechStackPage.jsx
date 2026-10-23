@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import Reveal from './motion/Reveal';
+import { TransitionLink } from './motion/PageTransition';
 
 const fullStackData = [
   {
@@ -38,11 +38,16 @@ const fullStackData = [
 
 function FullTechStackPage() {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8 animate-fade-in text-black dark:text-white">
-      <div className="flex items-center gap-4 mb-8 animate-fade-in">
-        <Link to="/" className="text-neutral-600 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors text-sm flex items-center gap-2 ">
+    <Reveal
+      className="max-w-4xl mx-auto px-4 py-8 text-black dark:text-white"
+      stagger=":scope > div > a, .space-y-12 > div, .skill-chip"
+      step={22}
+      scramble="h1"
+    >
+      <div className="flex items-center gap-4 mb-8">
+        <TransitionLink to="/" label="Home" className="text-neutral-600 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors text-sm flex items-center gap-2 ">
           ← Back to Home
-        </Link>
+        </TransitionLink>
         <h1 className="text-3xl font-bold tracking-tight">Tech Stack</h1>
       </div>
       
@@ -55,7 +60,7 @@ function FullTechStackPage() {
               {item.skills.map((skill, sIdx) => (
                 <span 
                   key={sIdx} 
-                  className="px-3 py-1 text-sm  bg-foreground/5 border border-foreground/10"
+                  className="skill-chip px-3 py-1 text-sm bg-foreground/5 border border-foreground/10"
                 >
                   {skill}
                 </span>
@@ -64,7 +69,7 @@ function FullTechStackPage() {
           </div>
         ))}
       </div>
-    </div>
+    </Reveal>
   );
 }
 

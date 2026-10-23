@@ -1,6 +1,6 @@
 const Experience = () => {
     return (
-        <div className="bg-white dark:bg-[#0b0d0e] p-5 space-y-2 group flex-1">
+        <div className="bg-white dark:bg-transparent p-5 space-y-2 group flex-1">
             <h2 className="text-lg font-bold">Experience</h2>
 
             <div className="relative space-y-4 mt-4">

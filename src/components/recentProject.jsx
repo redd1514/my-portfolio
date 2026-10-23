@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { TransitionLink } from "./motion/PageTransition";
 
 
 const Recent = () => {
@@ -6,12 +6,12 @@ const Recent = () => {
         <div className=" bg-white dark:bg-[#0b0d0e] bento-card p-4 col-span-1 md:col-span-4 space-y-2 group animate-fade-in animation-delay-300">           
             <div className="flex items-center justify-between">
                 <h2 className="text-lg font-bold">Recent Projects</h2>
-                <Link to="/projects" className="text-xs text-foreground/70 hover:text-foreground flex items-center gap-1 transition-colors">
+                <TransitionLink to="/projects" label="All Projects" className="view-all-link text-xs text-foreground/70 hover:text-foreground flex items-center gap-1 transition-colors">
                     View all
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M9 5l7 7-7 7"></path>
                     </svg>
-                </Link>
+                </TransitionLink>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2">

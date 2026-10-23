@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import profileImg from '../assets/dark_mode_profile.jpg';
 
 const INITIAL_MESSAGE = {
@@ -6,22 +6,91 @@ const INITIAL_MESSAGE = {
   text: "Hi! I'm Elmer. Ask me anything about my projects, technical stack, or background!",
   isGreeting: true,
 };
+const QUICK_PROMPTS = [
+  'What projects have you built?',
+  'What is your tech stack?',
+  'Tell me about your experience.',
+];
 const MAX_VISIBLE_MESSAGES = 40;
 const MAX_REQUEST_MESSAGES = 20;
 const REQUEST_TIMEOUT_MS = 30_000;
 
+function CloseIcon() {
+  return (
+    <svg aria-hidden="true" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M6 6l12 12M18 6L6 18" />
+    </svg>
+  );
+}
+
+function ArrowIcon() {
+  return (
+    <svg aria-hidden="true" className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M5 12h14M12 5l7 7-7 7" />
+    </svg>
+  );
+}
+
 function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
   const [messages, setMessages] = useState([INITIAL_MESSAGE]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const chatEndRef = useRef(null);
+  const inputRef = useRef(null);
+  const launcherRef = useRef(null);
+  const closeRef = useRef(null);
 
   useEffect(() => {
-    if (isOpen) {
+    if (isOpen && hasInteracted) {
       chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
-  }, [messages, isOpen]);
+  }, [messages, isOpen, hasInteracted]);
+
+  useEffect(() => {
+    if (isOpen && hasInteracted) {
+      inputRef.current?.focus();
+    }
+  }, [isOpen, hasInteracted]);
+
+  useEffect(() => {
+    if (!isOpen) return undefined;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isOpen]);
+
+  const handleClose = useCallback(() => {
+    setIsOpen(false);
+    requestAnimationFrame(() => launcherRef.current?.focus());
+  }, []);
+
+  const handleOpen = () => {
+    setIsOpen(true);
+    requestAnimationFrame(() => closeRef.current?.focus());
+  };
+
+  useEffect(() => {
+    if (!isOpen) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        handleClose();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, handleClose]);
+
+  const startConversation = () => {
+    setHasInteracted(true);
+  };
 
   const appendMessage = (message) => {
     setMessages((prev) => {
@@ -35,6 +104,7 @@ function Chatbot() {
     e.preventDefault();
     if (!input.trim() || isLoading) return;
 
+    startConversation();
     const userMessage = input.trim();
     const conversation = [
       ...messages.filter((message) => !message.isGreeting && !message.isError),
@@ -77,94 +147,180 @@ function Chatbot() {
       setIsLoading(false);
     }
   };
-  return (
-    <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 font-sans text-sm flex flex-col items-end animate-fade-in">
-      {/* 1. Expandable Floating Window Panel */}
-      <div 
-        className={`absolute bottom-[calc(100%+0.5rem)] md:bottom-[calc(100%+1rem)] right-0 w-[calc(100vw-2rem)] sm:w-80 md:w-96 h-[400px] md:h-[450px] rounded-2xl border flex flex-col shadow-2xl transition-all duration-300 origin-bottom-right
-        bg-white border-neutral-200 text-black dark:bg-[#0c0c0c] dark:border-neutral-800 dark:text-white
-        ${isOpen ? 'scale-100 opacity-100 visible' : 'scale-95 opacity-0 invisible pointer-events-none'}`}
-      >
-        {/* Top Bar Header */}
-        <div className="p-4 border-b flex justify-between items-center bg-neutral-50 dark:bg-[#121212] border-neutral-200 dark:border-neutral-800 rounded-t-2xl">
-          <div className="flex items-center gap-3">
-            <div className="relative shrink-0">
-              <img src={profileImg} alt="Elmer" className="w-[38px] h-[38px] rounded-full object-cover" />
-              <div className="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-emerald-500 border-2 border-white dark:border-[#121212]" />
-            </div>
-            <div className="flex flex-col">
-              <span className="font-bold tracking-tight text-[15px]">Chat with Elmer</span>
-              <span className="text-xs text-neutral-500 font-medium leading-none mt-1">Online</span>
-            </div>
-          </div>
-          <button onClick={() => setIsOpen(false)} className="text-neutral-400 hover:text-neutral-600 dark:hover:text-white font-mono p-1 text-lg leading-none">×</button>
-        </div>
 
-        {/* Scrolling Feed Container */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-white dark:bg-black">
-          {messages.map((msg, idx) => (
-            <div key={idx} className={`flex gap-2 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-              {msg.role === 'assistant' && (
-                <img src={profileImg} alt="Elmer" className="w-8 h-8 rounded-full object-cover shrink-0 mt-1 shadow-[0_2px_4px_rgba(0,0,0,0.1)]" />
-              )}
-              <div className={`flex flex-col ${msg.role === 'user' ? 'items-end' : 'items-start'} max-w-[80%]`}>
-                {msg.role === 'assistant' && (
-                  <span className="text-[11px] text-neutral-500 mb-1 ml-1 font-semibold tracking-tight">Elmer Benitez II</span>
-                )}
-                <div className={`px-4 py-2.5 leading-relaxed text-[13.5px] border shadow-sm
-                  ${msg.role === 'user' 
-                    ? 'bg-neutral-900 border-neutral-900 text-white dark:bg-white dark:border-white dark:text-black rounded-2xl rounded-tr-sm' 
-                    : 'bg-[#f4f4f5] border-transparent text-neutral-900 dark:bg-[#1a1a1a] dark:border-neutral-800 dark:text-neutral-200 rounded-2xl rounded-tl-sm'
-                  }`}
-                >
-                  {msg.text}
+  const handleQuickPrompt = (prompt) => {
+    startConversation();
+    setInput(prompt);
+    requestAnimationFrame(() => inputRef.current?.focus());
+  };
+
+  return (
+    <>
+      <div
+        id="portfolio-chatbot"
+        className={`fixed inset-0 z-[60] transition-opacity duration-500 ease-out ${isOpen ? 'visible opacity-100' : 'invisible pointer-events-none opacity-0'}`}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Chat with Elmer"
+        aria-hidden={!isOpen}
+      >
+        <div className="absolute inset-0 bg-white/[0.86] backdrop-blur-xl" />
+
+        <div className="relative z-10 flex h-full min-h-0 flex-col text-black">
+          <header className="flex shrink-0 items-center justify-between px-6 py-5 md:px-[8vw] md:py-7">
+            <div className="flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-neutral-500 md:text-xs">
+              <span className="h-2 w-2 rounded-full bg-emerald-500 shadow-[0_0_0_5px_rgba(16,185,129,0.13)]" />
+              Elmer / assistant
+            </div>
+            <button
+              ref={closeRef}
+              type="button"
+              onClick={handleClose}
+              aria-label="Close chat"
+              className="rounded-full p-2 text-neutral-500 transition-colors hover:bg-black/10 hover:text-black focus:outline-none focus:ring-2 focus:ring-black/30"
+            >
+              <CloseIcon />
+            </button>
+          </header>
+
+          {!hasInteracted ? (
+            <div className="flex min-h-0 flex-1 flex-col justify-between px-6 pb-8 md:px-[8vw] md:pb-12">
+              <div className="flex flex-1 items-center">
+                <div className="w-full max-w-[1500px]">
+                  <p className="max-w-[1400px] font-mono text-[clamp(2.5rem,5.2vw,5.8rem)] font-normal leading-[0.92] tracking-[-0.09em] text-neutral-950">
+                    what do you want to ask?
+                  </p>
+                  <p className="mt-6 max-w-md text-base leading-relaxed text-neutral-500 md:mt-8 md:text-lg">
+                    Ask about my work, technical stack, or experience.
+                  </p>
+                </div>
+              </div>
+
+              <div className="w-full max-w-[1500px]">
+                <div className="flex items-center gap-4 border-b border-black/20 pb-3 transition-colors focus-within:border-black">
+                  <form onSubmit={handleSendMessage} className="flex min-w-0 flex-1 items-center gap-3">
+                    <input
+                      ref={inputRef}
+                      type="text"
+                      value={input}
+                      onFocus={startConversation}
+                      onChange={(e) => setInput(e.target.value)}
+                      maxLength={2000}
+                      placeholder="type your question..."
+                      aria-label="Ask Elmer a question"
+                      className="min-w-0 flex-1 bg-transparent py-2 font-mono text-lg font-normal text-black placeholder:text-neutral-400 focus:outline-none md:text-2xl"
+                    />
+                    <button
+                      type="submit"
+                      disabled={isLoading || !input.trim()}
+                      aria-label="Send question"
+                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-black text-white transition-all hover:-translate-y-0.5 hover:bg-neutral-700 disabled:cursor-not-allowed disabled:opacity-30"
+                    >
+                      <ArrowIcon />
+                    </button>
+                  </form>
+                </div>
+                <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
+                  {QUICK_PROMPTS.map((prompt) => (
+                    <button
+                      key={prompt}
+                      type="button"
+                      onClick={() => handleQuickPrompt(prompt)}
+                      className="text-left text-xs text-neutral-500 underline-offset-4 transition-colors hover:text-black hover:underline focus:outline-none focus:ring-2 focus:ring-black/30"
+                    >
+                      {prompt}
+                    </button>
+                  ))}
                 </div>
               </div>
             </div>
-          ))}
-          {isLoading && (
-            <div className="flex gap-2 justify-start">
-              <img src={profileImg} alt="Elmer" className="w-8 h-8 rounded-full object-cover shrink-0 mt-1 shadow-[0_2px_4px_rgba(0,0,0,0.1)]" />
-              <div className="flex flex-col items-start max-w-[80%]">
-                <span className="text-[11px] text-neutral-500 mb-1 ml-1 font-semibold tracking-tight">Elmer Benitez II</span>
-                <div className="bg-[#f4f4f5] border-transparent dark:bg-[#1a1a1a] dark:border-neutral-800 text-neutral-500 rounded-2xl rounded-tl-sm px-4 py-2.5 shadow-sm text-[13.5px] italic font-medium">
-                  typing...
+          ) : (
+            <div className="flex min-h-0 flex-1 flex-col px-6 pb-7 md:px-[8vw] md:pb-10">
+              <div className="mx-auto flex min-h-0 w-full max-w-4xl flex-1 flex-col">
+                <div className="chatbot-scrollbar min-h-0 flex-1 space-y-7 overflow-y-auto py-4 md:py-8" aria-live="polite">
+                  {messages.map((msg, idx) => (
+                    <div key={`${msg.role}-${idx}`} className="chat-message-in flex gap-3 md:gap-4">
+                      {msg.role === 'assistant' && (
+                        <img src={profileImg} alt="Elmer" className="mt-1 h-9 w-9 shrink-0 rounded-full object-cover shadow-[0_2px_4px_rgba(0,0,0,0.12)] md:h-10 md:w-10" />
+                      )}
+                      <div className={`flex max-w-3xl flex-col ${msg.role === 'user' ? 'ml-auto items-end' : 'items-start'}`}>
+                        {msg.role === 'assistant' && (
+                          <span className="mb-2 ml-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-neutral-500">Elmer Benitez II</span>
+                        )}
+                        <div
+                          className={`max-w-full border px-5 py-3.5 text-sm leading-relaxed shadow-sm backdrop-blur-md md:px-6 md:py-4 md:text-base ${msg.role === 'user'
+                            ? 'rounded-3xl rounded-tr-md border-black/10 bg-black/[0.88] text-white'
+                            : `rounded-3xl rounded-tl-md border-black/10 bg-white/[0.68] text-neutral-900 ${msg.isError ? 'text-red-600' : ''}`
+                          }`}
+                        >
+                          {msg.text}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                  {isLoading && (
+                    <div className="chat-message-in flex gap-3 md:gap-4">
+                      <img src={profileImg} alt="Elmer" className="mt-1 h-9 w-9 shrink-0 rounded-full object-cover shadow-[0_2px_4px_rgba(0,0,0,0.12)] md:h-10 md:w-10" />
+                      <div className="flex flex-col items-start">
+                        <span className="mb-2 ml-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-neutral-500">Elmer Benitez II</span>
+                        <div className="rounded-3xl rounded-tl-md border border-black/10 bg-white/[0.68] px-6 py-4 text-neutral-500 shadow-sm backdrop-blur-md">
+                          <span className="inline-flex gap-1.5" aria-label="Elmer is typing">
+                            <span className="h-2 w-2 animate-pulse rounded-full bg-current" />
+                            <span className="h-2 w-2 animate-pulse rounded-full bg-current [animation-delay:150ms]" />
+                            <span className="h-2 w-2 animate-pulse rounded-full bg-current [animation-delay:300ms]" />
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  <div ref={chatEndRef} />
                 </div>
+
+                <form onSubmit={handleSendMessage} className="flex shrink-0 items-center gap-3 border-b border-black/20 pb-3 transition-colors focus-within:border-black">
+                  <input
+                    ref={inputRef}
+                    type="text"
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    maxLength={2000}
+                    placeholder="ask a follow-up..."
+                    aria-label="Ask a follow-up question"
+                    className="min-w-0 flex-1 bg-transparent py-2 font-mono text-lg font-normal text-black placeholder:text-neutral-400 focus:outline-none md:text-2xl"
+                  />
+                  <button
+                    type="submit"
+                    disabled={isLoading || !input.trim()}
+                    aria-label="Send question"
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-black text-white transition-opacity hover:opacity-75 disabled:cursor-not-allowed disabled:opacity-30"
+                  >
+                    <ArrowIcon />
+                  </button>
+                </form>
               </div>
             </div>
           )}
-          <div ref={chatEndRef} />
         </div>
-
-        {/* Input Form Footer */}
-        <form onSubmit={handleSendMessage} className="p-3 border-t border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black rounded-b-2xl flex gap-2">
-             <input 
-               type="text"
-               value={input}
-               onChange={(e) => setInput(e.target.value)}
-               maxLength={2000}
-               placeholder="Ask me about my tech stack or projects..."
-               className="flex-1 bg-neutral-100 dark:bg-[#121212] border-transparent rounded-full px-4 py-2.5 focus:outline-none focus:ring-1 focus:ring-neutral-300 dark:focus:ring-neutral-700 transition-all text-[13px] font-medium placeholder:text-neutral-400"
-             />
-           <button type="submit" disabled={isLoading || !input.trim()} className="bg-neutral-900 text-white dark:bg-white dark:text-black p-2 w-[42px] h-[42px] shrink-0 flex items-center justify-center rounded-sm transition-opacity hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed">
-            <svg className="w-4 h-4 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </button>
-        </form>
       </div>
 
-      {/* 2. Floating Action Launcher Button (Always stays here) */}
-      <button 
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-5 py-3.5 bg-white text-black border border-neutral-300 shadow-xl hover:border-neutral-400 dark:bg-white dark:text-black dark:border-transparent transition-all rounded-sm font-semibold tracking-tight z-10 group"
+      <button
+        ref={launcherRef}
+        type="button"
+        onClick={handleOpen}
+        aria-expanded={isOpen}
+        aria-controls="portfolio-chatbot"
+        aria-hidden={isOpen}
+        tabIndex={isOpen ? -1 : 0}
+        className={`fixed bottom-4 right-4 z-50 flex items-center gap-2 border px-5 py-3.5 font-semibold tracking-tight shadow-xl transition-all duration-300 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-neutral-400 dark:focus:ring-neutral-600 md:bottom-6 md:right-6 ${isOpen
+          ? 'pointer-events-none scale-95 opacity-0'
+          : 'rounded-sm border-neutral-300 bg-white text-black hover:border-neutral-400 dark:border-transparent dark:bg-white dark:text-black'
+        }`}
       >
-        <svg className="w-5 h-5 text-black animate-float" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+        <svg aria-hidden="true" className="h-5 w-5 animate-float" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
         </svg>
-        <span>Chat with me</span>
+        <span>{hasInteracted ? 'Continue chat' : 'Chat with me'}</span>
       </button>
-    </div>
+    </>
   );
 }
 

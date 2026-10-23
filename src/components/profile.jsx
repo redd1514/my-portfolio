@@ -1,13 +1,10 @@
-import profileImg from '../assets/dark_mode_profile.jpg';
-import profileTransitionImg from '../assets/dark_mode_profile_transition.png';
-import lightProfileImg from '../assets/light_mode_profile.png';
-import lightProfileTransitionImg from '../assets/light_mode_profile_transition.png';
+import ProfilePortrait from './ProfilePortrait';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {  faMoon } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import React, { useState, useEffect } from 'react';
-import { faSun } from '@fortawesome/free-solid-svg-icons';
+import { faSun, faTrophy } from '@fortawesome/free-solid-svg-icons';
 
 const Profile = () => {
 const [theme, setTheme] = useState('dark');
@@ -22,18 +19,9 @@ const [theme, setTheme] = useState('dark');
 
     return (
         <div className="flex flex-row items-start justify-start py-5 w-full gap-4 md:gap-6">
-            <div className="relative w-[140px] h-[153px] sm:w-[155px] sm:h-[155px] md:w-[160px] md:h-[160px] flex-shrink-0 group">
-                <div className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${theme === 'dark' ? 'opacity-100' : 'opacity-0'}`}>
-                    <img src={lightProfileImg} alt="Profile" className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0" />
-                    <img src={lightProfileTransitionImg} alt="Profile Transition" className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100" />
-                </div>
-                <div className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${theme === 'dark' ? 'opacity-0' : 'opacity-100'}`}>
-                    <img src={profileImg} alt="Profile" className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-0" />
-                    <img src={profileTransitionImg} alt="Profile Transition" className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100" />
-                </div>
-            </div>
+            <ProfilePortrait theme={theme} />
             
-            <div className="flex flex-col items-start gap-1 md:gap-2 w-full max-w-2xl text-left">
+            <div className="flex flex-col items-start gap-1 md:gap-2 flex-1 min-w-0 max-w-2xl text-left">
                 <div className="flex items-start justify-between gap-2 w-full">
                     <h1 className="text-lg sm:text-xl md:text-2xl font-bold truncate">Elmer Benitez II</h1>
                     <a>
@@ -79,6 +67,26 @@ const [theme, setTheme] = useState('dark');
                         <button className="dark:text-white flex w-full justify-center md:inline-flex h-7 md:h-8 items-center shadow-[0_1px_2px_rgba(0,0,0,0.03),0_1px_1px_rgba(0,0,0,0.04)] bg-background px-2.5 md:px-4 text-[10px] md:text-xs font-medium transition-all duration-200 hover:bg-gray-100 dark:hover:bg-gray-800 hover:-translate-y-0.5 gap-1 md:gap-1.5 whitespace-nowrap min-h-0"> <FontAwesomeIcon icon={faLinkedin} /> LinkedIn</button>
                     </a>
                 </div>
+                <a
+                    href="https://appbuildersph.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Appbuilders Hackathon Finalist"
+                    className="group/award relative flex h-7 w-full min-w-0 items-center justify-center gap-1.5 overflow-hidden border border-neutral-300 bg-white/70 pl-1 pr-2 md:gap-2 md:pr-2.5 md:inline-flex md:h-8 md:w-auto md:justify-start text-[10px] md:text-xs transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-500/70 hover:shadow-[0_6px_20px_-8px_rgba(245,158,11,0.45)] dark:border-neutral-700 dark:bg-white/[0.03] dark:hover:border-amber-400/60"
+                >
+                    <span className="inline-flex flex-shrink-0 items-center gap-1 bg-amber-500/10 px-1 py-0.5 font-mono text-[9px] uppercase tracking-wider md:px-1.5 md:tracking-widest text-amber-700 md:text-[10px] dark:bg-amber-400/10 dark:text-amber-300">
+                        <FontAwesomeIcon icon={faTrophy} className="transition-transform duration-300 group-hover/award:-rotate-12 group-hover/award:scale-110" />
+                        <span className="hidden sm:inline">Finalist</span>
+                    </span>
+                    <span className="truncate font-medium dark:text-white">
+                        <span className="sm:hidden">Hackathon Finalist</span>
+                        <span className="hidden sm:inline">Appbuilders Hackathon</span>
+                    </span>
+                    <svg className="hidden h-3 w-3 flex-shrink-0 text-foreground/50 sm:block transition-transform duration-300 group-hover/award:-translate-y-0.5 group-hover/award:translate-x-0.5 group-hover/award:text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 17L17 7M9 7h8v8" />
+                    </svg>
+                    <span aria-hidden="true" className="pointer-events-none absolute inset-y-0 -left-1/2 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-amber-300/25 to-transparent opacity-0 group-hover/award:opacity-100 motion-safe:transition-[transform,opacity] motion-safe:duration-700 group-hover/award:translate-x-[400%]" />
+                </a>
             </div>
             </div>
             

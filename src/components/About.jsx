@@ -2,10 +2,10 @@
 const About = () => {   
 
     return (
-        <div className="flex flex-col w-full bg-white dark:bg-[#0b0d0e] p-3 px-5">
+        <div className="flex flex-col w-full bg-white dark:bg-[transparent] p-3 px-5">
             <h2><b>About</b></h2>
             <p className="text-sm text-foreground/70 leading-relaxed">
-                I'm a 3rd year Information Technology student in Pamantasan ng Lungsod ng Valenzuela with a passion for full-stack development. I work on projects including 
+                I'm a 4th year Information Technology student in Pamantasan ng Lungsod ng Valenzuela with a passion for full-stack development. I work on projects including 
                 building modern web applications, mobile apps, game development and AI integration to solve real-world problems using modern technologies.
                 <br />
                 <br />

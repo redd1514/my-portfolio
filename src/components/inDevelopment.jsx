@@ -3,7 +3,7 @@ const InDevelopment = () => {
         <div className="p-4 space-y-2  bg-white dark:bg-[#0b0d0e] ">
             <h2 className="text-lg font-bold">In Development</h2>
             <div className="">
-                <p className="text-[13px] leading-relaxed font-serif mt-5 ">
+                <p className="text-[13px] leading-relaxed font-sans mt-5 ">
                 Currently developing a Camp-Navi system with AI integration for enhanced navigation and geofencing capabilities. This project aims to provide a seamless and intelligent navigation experience within the camp premises.
                 </p>
 

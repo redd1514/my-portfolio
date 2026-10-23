@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Reveal, { SpotlightCard } from './motion/Reveal';
+import { TransitionLink } from './motion/PageTransition';
 
 const projectsData = [
 {
@@ -72,17 +73,22 @@ const internData = [
 
 function AllProjectsPage() {
   return (
-    <div className="min-h-screen bg-white text-black dark:bg-black dark:text-white max-w-4xl mx-auto px-4 py-8 transition-colors duration-200 animate-fade-in">
+    <Reveal
+      className="min-h-screen text-black dark:text-white max-w-4xl mx-auto px-4 py-8"
+      stagger=":scope > div > a, .grid > div, :scope > h2"
+      step={70}
+      scramble="h1"
+    >
       
       <div className="flex items-center gap-4 mb-8">
-        <Link to="/" className="text-neutral-600 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors text-sm flex items-center gap-2">
+        <TransitionLink to="/" label="Home" className="text-neutral-600 hover:text-black dark:text-neutral-400 dark:hover:text-white transition-colors text-sm flex items-center gap-2">
           ← Back to Home
-        </Link>
+        </TransitionLink>
         <h1 className="text-2xl font-bold tracking-tight">All Projects</h1>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {projectsData.map((project, idx) => (
-          <div 
+          <SpotlightCard
             key={idx} 
             className={`rounded-sm p-6 flex flex-col justify-between transition-colors duration-200
               bg-neutral-50 text-neutral-900
@@ -120,14 +126,14 @@ function AllProjectsPage() {
               </a>
             </div>
 
-          </div>
+          </SpotlightCard>
         ))}
       </div>
 
       <h2 className="text-2xl font-bold tracking-tight mt-12 mb-4">Internship Projects</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {internData.map((project, idx) => (
-          <div 
+          <SpotlightCard
             key={idx} 
             className={`rounded-sm p-6 flex flex-col justify-between transition-colors duration-200
               bg-neutral-50 text-neutral-900
@@ -165,10 +171,10 @@ function AllProjectsPage() {
               </a>
             </div>
 
-          </div>
+          </SpotlightCard>
         ))}
       </div>
-    </div>
+    </Reveal>
   );
 }
 

@@ -1,3 +1,5 @@
+import defaultTheme from 'tailwindcss/defaultTheme';
+
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: "class",
@@ -8,6 +10,10 @@ export default {
 
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['"Space Grotesk"', ...defaultTheme.fontFamily.sans],
+        mono: ['"Space Mono"', ...defaultTheme.fontFamily.mono],
+      },
       colors: {
         border: "bg-gray-300",
         background: "bg-black",
