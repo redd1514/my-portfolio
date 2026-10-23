@@ -25,3 +25,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local tooling config
+.claude/
+
+# Raw demo reel footage (the site embeds the reel from YouTube)
+demoreel/
