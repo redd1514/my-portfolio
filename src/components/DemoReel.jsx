@@ -11,7 +11,7 @@ const DemoReel = () => {
     const showFallbackThumb = () => setThumb(FALLBACK_THUMB);
 
     return (
-        <div className="bento-card p-4 col-span-1 md:col-span-6 space-y-2 group animate-fade-in bg-white dark:bg-[#0b0d0e]">
+        <div className="bento-card p-4 col-span-1 md:col-span-6 space-y-2 group animate-fade-in bg-white dark:bg-[transparent]">
             <div className="flex items-center justify-between">
                 <h2 className="text-lg font-bold">Demo Reel</h2>
                 <a href={VIDEO_URL} target="_blank" rel="noreferrer" className="text-xs text-foreground/70 hover:text-foreground flex items-center gap-1 transition-colors">

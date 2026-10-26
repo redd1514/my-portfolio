@@ -71,7 +71,7 @@ const Gallery = () => {
     }, [selectedImageIndex]);
 
     return (
-        <div className="bento-card p-4 col-span-1 md:col-span-6 space-y-2 group animate-fade-in animation-delay-600  bg-white dark:bg-[#0b0d0e]">
+        <div className="bento-card p-4 col-span-1 md:col-span-6 space-y-2 group animate-fade-in animation-delay-600  bg-white dark:bg-[transparent]">
             <h2 className="text-lg font-bold">Gallery</h2>
             <div className="relative">
                 <div className="relative overflow-hidden w-full">

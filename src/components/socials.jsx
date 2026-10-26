@@ -1,7 +1,7 @@
 const Socials = () => {
 
     return (
-        <div className="p-4 space-y-2  bg-white dark:bg-[#0b0d0e] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">   
+        <div className="p-4 space-y-2  bg-white dark:bg-[transparent] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">   
             <div className="flex flex-col justify-between space-y-1.5">
                 <p className="text-xs font-medium mb-2">A member of</p>
                 <div className="space-y-1 flex flex-col h-full">

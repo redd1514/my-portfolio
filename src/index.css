@@ -232,39 +232,3 @@ body {
     animation: none;
   }
 }
-
-@keyframes chatbotMessageIn {
-  from {
-    opacity: 0;
-    transform: translateY(6px) scale(0.98);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-.chat-message-in {
-  animation: chatbotMessageIn 240ms ease-out both;
-}
-
-.chatbot-scrollbar {
-  scrollbar-width: thin;
-  scrollbar-color: rgb(212 212 216) transparent;
-}
-
-.chatbot-scrollbar::-webkit-scrollbar {
-  width: 5px;
-}
-
-.chatbot-scrollbar::-webkit-scrollbar-thumb {
-  border-radius: 999px;
-  background: rgb(212 212 216);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .chat-message-in {
-    animation: none;
-  }
-}
