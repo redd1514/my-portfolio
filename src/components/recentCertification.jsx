@@ -2,7 +2,7 @@ const Certificate = () => {
     return (
     
     
-    <div className="p-4 space-y-2 group bg-white dark:bg-[#0b0d0e] ">
+    <div className="p-4 space-y-2 group bg-white dark:bg-[transparent] ">
         <div className="flex items-center justify-between">
                 <h2 className="text-lg font-bold">Recent Certifications</h2>
                 

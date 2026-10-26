@@ -3,7 +3,7 @@ import { TransitionLink } from "./motion/PageTransition";
 
 const Recent = () => {
     return ( 
-        <div className=" bg-white dark:bg-[#0b0d0e] bento-card p-4 col-span-1 md:col-span-4 space-y-2 group animate-fade-in animation-delay-300">           
+        <div className=" bg-white dark:bg-[transparent] bento-card p-4 col-span-1 md:col-span-4 space-y-2 group animate-fade-in animation-delay-300">           
             <div className="flex items-center justify-between">
                 <h2 className="text-lg font-bold">Recent Projects</h2>
                 <TransitionLink to="/projects" label="All Projects" className="view-all-link text-xs text-foreground/70 hover:text-foreground flex items-center gap-1 transition-colors">

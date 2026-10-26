@@ -2,7 +2,7 @@ import { TransitionLink } from "./motion/PageTransition";
 
 const TechStack = () => {
     return (
-        <div className="flex flex-col w-full bg-white dark:bg-[#0b0d0e] mt-2 p-3 px-5 gap-3">
+        <div className="flex flex-col w-full bg-white dark:bg-[transparent] mt-2 p-3 px-5 gap-3">
             <div className="flex items-center justify-between">
                 <h2 className="text-lg font-bold">Tech Stack</h2>
                 <TransitionLink to="/tech-stack" label="Tech Stack" className="view-all-link text-xs text-foreground/70 hover:text-foreground flex items-center gap-1 transition-colors">

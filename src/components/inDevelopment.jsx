@@ -1,6 +1,6 @@
 const InDevelopment = () => {
     return (
-        <div className="p-4 space-y-2  bg-white dark:bg-[#0b0d0e] ">
+        <div className="p-4 space-y-2  bg-white dark:bg-[transparent] ">
             <h2 className="text-lg font-bold">In Development</h2>
             <div className="">
                 <p className="text-[13px] leading-relaxed font-sans mt-5 ">
