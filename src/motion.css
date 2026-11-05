@@ -134,88 +134,499 @@
   will-change: opacity, transform;
 }
 
-.site-nav {
+/* ---------- Constellation rail ---------- */
+/* One star per home section, on the right edge (bottom edge on phones). */
+
+.constellation {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 56;
+  right: 22px;
+  top: 50%;
+  z-index: 55;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
   color: var(--text-color);
-  background: color-mix(in srgb, var(--bg-color) 85%, transparent);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid color-mix(in srgb, var(--text-color) 12%, transparent);
-  font-size: 13px;
-  transform: translateY(-100%);
-  transition: transform 500ms var(--ease-out-expo);
-}
-
-.site-nav.is-visible {
-  transform: translateY(0);
-}
-
-.site-nav__inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  max-width: 56rem;
-  height: 48px;
-  margin: 0 auto;
-  padding: 0 16px;
-}
-
-/* The bottom edge fills with scroll progress. */
-.site-nav__progress {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
-  height: 1px;
-  background: var(--text-color);
-  transform: scaleX(0);
-  transform-origin: left;
+  font-family: 'Space Mono', ui-monospace, monospace;
+  opacity: 0;
+  transform: translate(16px, -50%);
   pointer-events: none;
+  transition: opacity 500ms ease, transform 700ms var(--ease-out-expo);
 }
 
-.site-nav__brand {
-  font-weight: 700;
+.constellation.is-visible {
+  opacity: 1;
+  transform: translate(0, -50%);
+  pointer-events: auto;
 }
 
-.site-nav__links {
+.constellation__map {
+  position: relative;
+}
+
+.constellation__lines {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+}
+
+.constellation__lines polyline {
+  fill: none;
+  stroke-width: 1;
+  stroke-linejoin: round;
+}
+
+.constellation__track {
+  stroke: color-mix(in srgb, var(--text-color) 18%, transparent);
+  stroke-dasharray: 2 4;
+}
+
+.constellation__trail {
+  stroke: color-mix(in srgb, var(--text-color) 80%, transparent);
+  stroke-dasharray: 1 1;
+  transition: stroke-dashoffset 300ms ease-out;
+}
+
+.constellation__star {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  margin: -13px 0 0 -13px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+}
+
+.constellation__star:focus-visible {
+  outline: 1px solid var(--text-color);
+  outline-offset: 2px;
+}
+
+.constellation__dot {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--text-color) 55%, transparent);
+  background: var(--bg-color);
+  transition: transform 450ms var(--ease-out-expo), background-color 300ms ease, border-color 300ms ease;
+}
+
+.constellation__star.is-passed .constellation__dot {
+  background: color-mix(in srgb, var(--text-color) 55%, transparent);
+  border-color: transparent;
+}
+
+.constellation__star.is-active .constellation__dot {
+  background: var(--text-color);
+  border-color: var(--text-color);
+  transform: scale(1.45);
+  box-shadow: 0 0 10px 1px color-mix(in srgb, var(--text-color) 55%, transparent);
+}
+
+/* The current star sends out a slow ring, like the chat launcher's ping. */
+.constellation__star.is-active .constellation__dot::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  border: 1px solid var(--text-color);
+  animation: constellationPing 2.4s var(--ease-out-expo) infinite;
+}
+
+.constellation__star:hover .constellation__dot {
+  transform: scale(1.9);
+}
+
+.constellation__label {
+  position: absolute;
+  right: calc(100% + 6px);
+  top: 50%;
+  translate: 6px -50%;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--bg-color) 85%, transparent);
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  color: var(--text-color);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 250ms ease, translate 450ms var(--ease-out-expo);
+}
+
+.constellation__star:hover .constellation__label,
+.constellation__star:focus-visible .constellation__label {
+  opacity: 1;
+  translate: 0 -50%;
+}
+
+/* The menu key under the stars: section count, then a "/" key cap. */
+.constellation__menu {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 24px;
-}
-
-.site-nav__link,
-.site-nav__sound {
+  gap: 6px;
+  font-size: 10px;
   color: color-mix(in srgb, var(--text-color) 55%, transparent);
   transition: color 200ms ease;
 }
 
-.site-nav__link:hover,
-.site-nav__link.is-current,
-.site-nav__sound:hover {
+.constellation__menu:hover,
+.constellation__menu:focus-visible {
   color: var(--text-color);
 }
 
-.site-nav__meta {
+.constellation__menu kbd,
+.palette kbd {
+  display: inline-grid;
+  place-items: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border: 1px solid color-mix(in srgb, var(--text-color) 30%, transparent);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 11px;
+  line-height: 1;
+}
+
+.constellation__menu:hover kbd {
+  border-color: var(--text-color);
+}
+
+/* Off the home page only the menu key remains. */
+.constellation.is-bare {
+  top: auto;
+  bottom: 28px;
+  transform: none;
+}
+
+/* Phones: a short horizontal constellation in the bottom-left corner, clear
+   of the chat launcher on the right. */
+.constellation.is-compact {
+  top: auto;
+  right: auto;
+  left: 16px;
+  bottom: 18px;
+  flex-direction: row;
+  gap: 16px;
+  padding: 12px 14px 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--bg-color) 88%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid color-mix(in srgb, var(--text-color) 12%, transparent);
+  transform: translateY(16px);
+}
+
+.constellation.is-compact.is-visible {
+  transform: none;
+}
+
+.constellation.is-compact .constellation__map {
+  margin: 0 6px;
+}
+
+.constellation.is-compact .constellation__label {
+  display: none;
+}
+
+.constellation.is-compact .constellation__menu {
+  flex-direction: row;
+}
+
+@media (max-width: 1023px) {
+  .constellation.is-bare {
+    right: auto;
+    left: 16px;
+    bottom: 24px;
+  }
+}
+
+@keyframes constellationPing {
+  0% { transform: scale(1); opacity: 0.8; }
+  70%, 100% { transform: scale(3.2); opacity: 0; }
+}
+
+.warp-streaks {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------- Command palette ---------- */
+
+.palette {
+  position: fixed;
+  inset: 0;
+  z-index: 65;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 16vh 16px 16px;
+  color: var(--text-color);
+  font-family: 'Space Mono', ui-monospace, monospace;
+  background: color-mix(in srgb, var(--bg-color) 55%, transparent);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 250ms ease, visibility 0s linear 250ms;
+}
+
+.palette.is-open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 250ms ease;
+}
+
+.palette__panel {
+  width: 100%;
+  max-width: 560px;
+  border: 1px solid color-mix(in srgb, var(--text-color) 22%, transparent);
+  border-radius: 6px;
+  background: var(--bg-color);
+  box-shadow: 0 30px 80px -30px color-mix(in srgb, var(--text-color) 35%, transparent);
+  overflow: hidden;
+  transform: translateY(-12px) scale(0.98);
+  transition: transform 450ms var(--ease-out-expo);
+}
+
+.palette.is-open .palette__panel {
+  transform: none;
+}
+
+.palette__prompt {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 8px;
+  padding: 14px 16px;
+  border-bottom: 1px solid color-mix(in srgb, var(--text-color) 12%, transparent);
+  font-size: 14px;
 }
 
-.site-nav__cta {
-  font-weight: 500;
-  text-decoration: underline;
-  text-underline-offset: 4px;
+.palette__path {
+  color: color-mix(in srgb, var(--text-color) 45%, transparent);
 }
 
-@media (max-width: 720px) {
-  .site-nav__links,
-  .site-nav__sound {
+.palette__input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: 0;
+  outline: none;
+  color: var(--text-color);
+  caret-color: var(--text-color);
+  font: inherit;
+}
+
+.palette__input::placeholder {
+  color: color-mix(in srgb, var(--text-color) 30%, transparent);
+}
+
+/* The list scrolls with the native bar hidden; a slim custom bar and soft
+   edge fades take its place. Group labels stick to the top while scrolling. */
+.palette__body {
+  --fade: 28px;
+  position: relative;
+}
+
+.palette__list {
+  --label-height: 30px;
+  max-height: min(52vh, 380px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  scroll-padding-top: calc(var(--label-height) + 4px);
+  scroll-padding-bottom: var(--fade);
+  padding: 0 14px 8px 6px;
+  margin: 0;
+  list-style: none;
+  font-size: 13px;
+  -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - var(--fade-bottom, 0px)), transparent);
+  mask-image: linear-gradient(to bottom, #000 calc(100% - var(--fade-bottom, 0px)), transparent);
+}
+
+.palette__list::-webkit-scrollbar {
+  display: none;
+}
+
+.palette__body.more-below .palette__list {
+  --fade-bottom: var(--fade);
+}
+
+.palette__options {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Sticky labels sit on the panel color so items slide under them cleanly. */
+.palette__group {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: var(--label-height);
+  padding: 0 10px;
+  background: var(--bg-color);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--text-color) 40%, transparent);
+}
+
+.palette__group::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: color-mix(in srgb, var(--text-color) 10%, transparent);
+}
+
+/* Once scrolled, the pinned label gets a hairline so it reads as a header. */
+.palette__body.more-above .palette__group {
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--text-color) 8%, transparent);
+}
+
+.palette__scrollbar {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  right: 5px;
+  width: 2px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--text-color) 8%, transparent);
+  opacity: 0;
+  transition: opacity 250ms ease, width 200ms ease, right 200ms ease;
+}
+
+.palette__body.can-scroll .palette__scrollbar {
+  opacity: 1;
+}
+
+.palette__body:hover .palette__scrollbar {
+  width: 4px;
+  right: 4px;
+}
+
+.palette__thumb {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc((100% - 100% * var(--thumb-size, 1)) * var(--thumb-offset, 0));
+  height: calc(100% * var(--thumb-size, 1));
+  min-height: 24px;
+  border-radius: inherit;
+  background: color-mix(in srgb, var(--text-color) 55%, transparent);
+  cursor: grab;
+  touch-action: none;
+  transition: background-color 200ms ease;
+}
+
+/* A wider invisible hit area so the 2px thumb is easy to grab. */
+.palette__thumb::before {
+  content: "";
+  position: absolute;
+  inset: 0 -6px;
+}
+
+.palette__thumb:hover,
+.palette__thumb:active {
+  background: var(--text-color);
+}
+
+.palette__thumb:active {
+  cursor: grabbing;
+}
+
+.palette__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: color-mix(in srgb, var(--text-color) 65%, transparent);
+}
+
+.palette__item.is-selected {
+  background: var(--text-color);
+  color: var(--bg-color);
+}
+
+.palette__item.is-selected .palette__label::before {
+  content: "> ";
+}
+
+.palette__label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.palette__hint {
+  font-size: 11px;
+  opacity: 0.55;
+  white-space: nowrap;
+}
+
+.palette__empty {
+  padding: 18px 10px;
+  font-size: 12px;
+  color: color-mix(in srgb, var(--text-color) 40%, transparent);
+}
+
+.palette__footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 0;
+  padding: 10px 16px;
+  border-top: 1px solid color-mix(in srgb, var(--text-color) 12%, transparent);
+  font-size: 10px;
+  color: color-mix(in srgb, var(--text-color) 45%, transparent);
+}
+
+.palette__footer kbd {
+  min-width: 16px;
+  height: 16px;
+  font-size: 10px;
+  margin-right: 3px;
+}
+
+.palette__status {
+  color: var(--text-color);
+}
+
+@media (max-width: 767px) {
+  .palette {
+    padding-top: 10vh;
+  }
+  .palette__path {
     display: none;
+  }
+  .palette__hint {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .constellation,
+  .constellation__trail,
+  .palette__panel {
+    transition: none;
+  }
+  .constellation__star.is-active .constellation__dot::after {
+    animation: none;
   }
 }
 

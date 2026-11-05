@@ -61,6 +61,29 @@ function noiseBuffer() {
     return noise;
 }
 
+// Major pentatonic, so any run of stars lighting up sounds like a melody.
+const STAR_SCALE = [523.25, 587.33, 659.25, 783.99, 880, 1046.5, 1174.66];
+
+// A soft bell for a constellation star lighting up; each star has its own note.
+export function playStarChime(index) {
+    if (!enabled || !ctx || ctx.state !== 'running') return;
+
+    const now = ctx.currentTime;
+    const freq = STAR_SCALE[index % STAR_SCALE.length];
+    [1, 2.01].forEach((ratio, i) => {
+        const osc = ctx.createOscillator();
+        osc.type = 'sine';
+        osc.frequency.value = freq * ratio;
+        const gain = ctx.createGain();
+        gain.gain.setValueAtTime(0.0001, now);
+        gain.gain.exponentialRampToValueAtTime(i === 0 ? 0.06 : 0.015, now + 0.01);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.9);
+        osc.connect(gain).connect(master);
+        osc.start(now);
+        osc.stop(now + 1);
+    });
+}
+
 // A soft glassy tick: a short falling sine ping plus a few milliseconds of
 // high-passed noise for a tactile edge. Pitch wobbles slightly so repeated
 // hovers don't sound mechanical.

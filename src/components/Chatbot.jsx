@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import ChatLauncher from './ChatLauncher';
+import { onAskChatbot } from './motion/navigation';
 
 const QUICK_PROMPTS = [
   'what projects have you built?',
@@ -163,6 +164,12 @@ function Chatbot() {
       clearTimeout(timeoutId);
     }
   };
+
+  // The command palette hands over questions it can't answer itself.
+  useEffect(() => onAskChatbot((question) => {
+    setIsOpen(true);
+    ask(question);
+  }));
 
   const handleSubmit = (event) => {
     event.preventDefault();
