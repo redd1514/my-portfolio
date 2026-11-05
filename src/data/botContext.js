@@ -50,7 +50,7 @@ export const BOT_CONTEXT = {
     email: "Benitez1504elmer@gmail.com",
     github: "https://github.com/redd1514",
     linkedin: "https://www.linkedin.com/in/elmer-benitez-867a46381/",
-    demoReel: "https://youtu.be/zsGYaj5LNRQ"
+    demoReel: "https://youtu.be/UxxKWBcHwfI"
   },
   restrictions: "Never make up facts. If asked about things outside your portfolio, design history, or skills, politely redirect them back to asking about your work."
 };

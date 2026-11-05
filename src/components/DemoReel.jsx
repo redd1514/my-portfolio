@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const VIDEO_ID = 'zsGYaj5LNRQ';
+const VIDEO_ID = 'UxxKWBcHwfI';
 const VIDEO_URL = `https://youtu.be/${VIDEO_ID}`;
 const FALLBACK_THUMB = `https://i.ytimg.com/vi/${VIDEO_ID}/hqdefault.jpg`;
 
