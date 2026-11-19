@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import React, { useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import About from './components/About';
 import './index.css';
 import TechStack from './components/techStack';
@@ -118,6 +119,7 @@ function App() {
                   </PageTransitionProvider>
                 </Router>
             </div>
+            <Analytics />
         </>
     )
 }
